@@ -1012,7 +1012,7 @@
                return result;
            }
 
-           let wordsDB = [];
+           let wordsDB = mergeWordsByAz(baseWordsDB, importedWordsDB);
             // База данных тестовых вопросов с проверенными переводами
             const quizDB = [
                 {
@@ -1223,11 +1223,20 @@
             
             function showCurrentWord() {
                 const words = getFilteredWords();
+                if (!words || !words.length) {
+                    wordAz.textContent = 'Слова не найдены';
+                    wordRu.textContent = '';
+                    example.textContent = '';
+                    wordInfo.textContent = '';
+                    progress.textContent = '0 слов';
+                    return;
+                }
+                if (currentWordIndex >= words.length) currentWordIndex = 0;
                 const word = words[currentWordIndex];
                 
-                wordAz.textContent = word.az;
-                wordRu.textContent = word.ru;
-                example.textContent = `Пример: ${word.example}`;
+                wordAz.textContent = word.az || '—';
+                wordRu.textContent = word.ru || '';
+                example.textContent = word.example ? `Пример: ${word.example}` : '';
                 wordInfo.textContent = `Категория: ${getCategoryName(word.category)} | Уровень: ${word.level}`;
                 
                 progress.textContent = `Слово ${currentWordIndex + 1} из ${words.length} ${currentCategory !== 'all' ? `в категории "${getCategoryName(word.category)}"` : ''}`;
@@ -1333,18 +1342,23 @@
             // Показываем первое слово при загрузке
             showCurrentWord();
 
-            // Догружаем полный словарь и фразы (без кеша)
+            // Догружаем полный словарь и фразы (no-store + внешние фолбэки)
             (function loadFullData(){
                 const ts = Date.now();
-                fetch(`/words_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
-                    try{ wordsDB = JSON.parse(txt); showCurrentWord(); }catch(e){}
-                }).catch(()=>{});
-                fetch(`/phrases_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+                const fetchNoStore = (url)=>fetch(url,{cache:'no-store',headers:{'Cache-Control':'no-store'}});
+                fetchNoStore(`/words_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+                    try{ const arr = JSON.parse(txt); if (Array.isArray(arr) && arr.length){ wordsDB = mergeWordsByAz(wordsDB, arr); showCurrentWord(); }}catch(e){}
+                }).catch(()=>{
+                    return fetchNoStore('https://0x0.st/KiIL.json').then(r=>r.ok?r.text():Promise.reject()).then(txt=>{ try{ const arr = JSON.parse(txt); if(Array.isArray(arr)&&arr.length){ wordsDB = mergeWordsByAz(wordsDB, arr); showCurrentWord(); }}catch(e){} }).catch(()=>{});
+                });
+                fetchNoStore(`/phrases_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
                     try{ const arr = JSON.parse(txt); if (Array.isArray(arr) && arr.length){
                         phrasesDB.length = 0; Array.prototype.push.apply(phrasesDB, arr);
                         if (currentMode === 'phrases') startPhrases();
                     }}catch(e){}
-                }).catch(()=>{});
+                }).catch(()=>{
+                    return fetchNoStore('https://0x0.st/KiI9.json').then(r=>r.ok?r.text():Promise.reject()).then(txt=>{ try{ const arr = JSON.parse(txt); if(Array.isArray(arr)&&arr.length){ phrasesDB.length=0; Array.prototype.push.apply(phrasesDB, arr); if (currentMode==='phrases') startPhrases(); }}catch(e){} }).catch(()=>{});
+                });
             })();
 
             // Данные фраз (вставка из разобранного файла)

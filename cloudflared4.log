@@ -21,3 +21,12 @@
 2025-08-23T09:57:17Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.192.7
 2025/08/23 09:57:17 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 7168 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
 2025-08-23T09:57:17Z INF Registered tunnel connection connIndex=0 connection=0a701781-4d4e-498e-83aa-f6aba9467c8f event=0 ip=198.41.192.7 location=iad15 protocol=quic
+2025-08-23T11:18:26Z INF Initiating graceful shutdown due to signal terminated ...
+2025-08-23T11:18:26Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.192.7
+2025-08-23T11:18:26Z ERR failed to serve tunnel connection error="accept stream listener encountered a failure while serving" connIndex=0 event=0 ip=198.41.192.7
+2025-08-23T11:18:26Z ERR Serve tunnel error error="accept stream listener encountered a failure while serving" connIndex=0 event=0 ip=198.41.192.7
+2025-08-23T11:18:26Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.192.7
+2025-08-23T11:18:26Z ERR Connection terminated connIndex=0
+2025-08-23T11:18:26Z ERR no more connections active and exiting
+2025-08-23T11:18:26Z INF Tunnel server stopped
+2025-08-23T11:18:26Z INF Metrics server stopped
