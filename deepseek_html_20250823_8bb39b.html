@@ -1012,7 +1012,7 @@
                return result;
            }
 
-           let wordsDB = mergeWordsByAz(baseWordsDB, importedWordsDB);
+           let wordsDB = JSON.parse([{"az": "Daşınmaz əmlak", "ru": "Недвижимость, недвижимое имущество", "category": "estate", "example": "", "level": "Основной"}, {"az": "Mənzil", "ru": "Квартира", "category": "estate", "example": "", "level": "Основной"}, {"az": "Yeni tikili", "ru": "Новостройка", "category": "estate", "example": "", "level": "Основной"}, {"az": "Yaşayış kompleksi", "ru": "Жилой комплекс", "category": "estate", "example": "", "level": "Основной"}, {"az": "Layihə", "ru": "Проект", "category": "estate", "example": "", "level": "Основной"}, {"az": "Resort", "ru": "Курорт", "category": "estate", "example": "", "level": "Основной"}, {"az": "Kurort", "ru": "Курорт", "category": "estate", "example": "", "level": "Основной"}, {"az": "Yaşayış sahəsi", "ru": "Жилая площадь", "category": "estate", "example": "", "level": "Основной"}, {"az": "Duplex / Daxmalı ev", "ru": "Дуплекс (дом на двух хозяев)", "category": "estate", "example": "", "level": "Основной"}, {"az": "Studiya", "ru": "Студия (квартира)", "category": "estate", "example": "", "level": "Основной"}, {"az": "Yataq otağı", "ru": "Спальня", "category": "estate", "example": "", "level": "Основной"}, {"az": "Lüks mənzil", "ru": "Люксовая квартира", "category": "estate", "example": "", "level": "Основной"}, {"az": "Debdebəli ev", "ru": "Роскошный дом", "category": "estate", "example": "", "level": "Основой"}]);
             // База данных тестовых вопросов с проверенными переводами
             const quizDB = [
                 {
@@ -1335,7 +1335,68 @@
 
             // Данные фраз (вставка из разобранного файла)
             const phrasesDB = [
-
+  {"az":"Salam, sizi eşitmək çox şadam. [İsim] dən əlaqə.","ru":"Здравствуйте, очень рад вас слышать. Связь от [Имя].","section":"Установление контакта и первый диалог"},
+  {"az":"Sea Breeze-in informasiya mərkəzində sizinlə görüşək.","ru":"Давайте познакомимся в информационном центре Sea Breeze.","section":"Установление контакта и первый диалог"},
+  {"az":"Xoş gəlmisiniz! Bizə maraq göstərdiyiniz üçün təşəkkürlər.","ru":"Добро пожаловать! Спасибо, что проявили интерес к нам.","section":"Установление контакта и первый диалог"},
+  {"az":"Sizin üçün nə edə bilərəm?","ru":"Что я могу для вас сделать?","section":"Установление контакта и первый диалог"},
+  {"az":"Sizə necə müraciət etməliyəm?","ru":"Как мне к вам обращаться?","section":"Установление контакта и первый диалог"},
+  {"az":"Sizi hansı layihə daha çox maraqlandırır?","ru":"Какой проект вас интересует больше всего?","section":"Установление контакта и первый диалог"},
+  {"az":"Sea Breeze haqqında hardan eşitmisiniz?","ru":"Где вы слышали о Sea Breeze?","section":"Установление контакта и первый диалог"},
+  {"az":"Bizim veb-saytımızda hansı obyektlərə baxmısınız?","ru":"На какие объекты вы смотрели на нашем сайте?","section":"Установление контакта и первый диалог"},
+  {"az":"Siz özünüz üçün və ya investisiya üçün baxırsınız?","ru":"Вы смотрите для себя или для инвестиций?","section":"Установление контакта и первый диалог"},
+  {"az":"Bakıda daşınmaz əmlakınız var?","ru":"У вас есть недвижимость в Баку?","section":"Установление контакта и первый диалог"},
+  {"az":"Özünüz üçün ideal mənzili necə təsəvvür edirsiniz?","ru":"Как вы представляете себе идеальную квартиру?","section":"Установление контакта и первый диалог"},
+  {"az":"Deyin görüm, sizə görə mənzilin ən əhəmiyyətli üstünlüyü nə olmalıdır?","ru":"Скажите, по вашему мнению, какое самое важное преимущество должно быть у квартиры?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Almaq istədiyiniz obyektə nə qədər investisiya etməyi düşünürsünüz?","ru":"Сколько вы考虑 инвестировать в объект, который хотите купить?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Sizcə, bu layihənin gələcək dəyər artımını nə təsirləndirir?","ru":"Как вы думаете, что повлияет на будущий рост стоимости этого проекта?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Əvvəllər daşınmaz əmlak alım-satımı ilə məşğul olmusunuz?","ru":"Вы раньше занимались куплей-продажей недвижимости?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Sizcə, dənizə yaxınlıq yaşayış keyfiyyətini nə dərəcədə artırır?","ru":"Насколько, по вашему мнению, близость к морю повышает качество жизни?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Dəniz mənzərəsi sizin üçün nə qədər vacibdir?","ru":"Насколько важен для вас вид на море?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Açıq və ya qapalı hovuz üstünlüyünüz varmı?","ru":"Вы предпочитаете открытый или закрытый бассейн?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Yaşayış kompleksində sosial obyektlər (restoran, spa, fitness) sizin üçün əhəmiyyətlidirmi?","ru":"Важны ли для вас социальные объекты в жилом комплексе (ресторан, спа, фитнес)?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Maşın üçün parkinq yeri sizin üçün prioritetdirmi?","ru":"Является ли парковочное место для автомобиля для вас приоритетом?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Uşaqlarınız üçün oyun meydançalarının olması sizi maraqlandırırmı?","ru":"Вас интересует наличие детских площадок для ваших детей?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Alış üçün təxmini tarix nəzərdə tutursunuz?","ru":"Какую примерную дату покупки вы рассматриваете?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"İlkin ödəniş üçün nə qədər bir məbləğ ayıra bilərsiniz?","ru":"Какую сумму вы можете выделить для первоначального взноса?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Kredit və ya nağd ödəniş üstünlüyünüz varmı?","ru":"Вы предпочитаете кредит или наличный расчет?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Sizcə, indi almaq üçün ən yaxşı vaxtdırmı?","ru":"Как вы думаете, сейчас лучшее время для покупки?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Bu layihənin investisiya potensialını necə qiymətləndirirsiniz?","ru":"Как вы оцениваете инвестиционный потенциал этого проекта?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Bahadır\" (Это дорого): \"Başa düşürəm, lakin nəzərə alın ki, bu qiymətə yüksək keyfiyyətli materiallar, premium infrastruktur və eksklyuziv dəniz mənzərəsi daxildir. Bu, uzunmüddətli investisiyadır.\"","ru":"Понимаю, но учтите, что в эту цену входят высококачественные материалы, премиальная инфраструктура и эксклюзивный вид на море. Это долгосрочная инвестиция.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Düşünüm\" (Я подумаю): \"Əlbəttə, razıyam. Təklif etmək istərdim ki, ofisimizdə master-planı görəsəniz, daha aydın fikir formalaşa bilər. Bu, yalnız 20 dəqiqənizi alar.\"","ru":"Конечно, я согласен. Хочу предложить вам посмотреть мастер-план в нашем офисе. Это прояснит картину. Это займет всего 20 минут.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Digər layihələrlə müqayisə edim\" (Я сравню с другими проектами): \"Əla fikirdir. Mən də sizə digər layihələrdə olmayan, ancaq Sea Breeze-də mövcud olan üstünlükləri göstərim ki, daha dəqiq müqayisə edə biləsiniz.\"","ru":"Отличная идея. Я также покажу вам преимущества, которых нет в других проектах, но есть в Sea Breeze, чтобы вы могли сравнить более точно.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"İndi vaxtım yoxdur\" (Сейчас у меня нет времени): \"Tamamilə başa düşürəm. Sizin üçün ən əlverişli vaxtı təklif etsəniz, mən həmin vaxtı sizin üçün rezerv edəcəm.\"","ru":"Полностью понимаю. Если вы предложите самое удобное для вас время, я зарезервирую его для вас.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Bazar vəziyyəti qeyri-müəyyəndir\" (Ситуация на рынке неопределенная): \"Həqiqətən də, bazar dalğalanır. Ancaq məhz belə dövrlərdə ən sərfəli şərtlər əldə etmək olar. Erkən investisiya həmişə daha çox qazanc gətirir.\"","ru":"Действительно, рынок колеблется. Но именно в такие периоды можно получить самые выгодные условия. Ранние инвестиции всегда приносят больше дохода.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Sea Breeze təkcə yaşayış yeri deyil, tamamlanmış bir həyat tərzidir.","ru":"Sea Breeze – это не просто место для жизни, это полностью готовый образ жизни.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Marina Village Bakının mərkəzində yerləşən lüks və rahatlıq vahididir.","ru":"Marina Village – это оазис роскоши и комфорта в центре Баку.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Layihəmiz \"şəhər içində şəhər\" konsepsiyası üzərində qurulub.","ru":"Наш проект построен по концепции \"город в городе\".","section":"Презентация объекта и его преимуществ"},
+  {"az":"Burada hər bir detal, sizin rahatlığınız və əmin-amanlığınız üçün düşünülüb.","ru":"Здесь каждая деталь продумана для вашего комфорта и безопасности.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Dənizə yaxınlıq təbii gözəlliyi və rahatlığı bir arada gətirir.","ru":"Близость к морю сочетает в себе природную красоту и комфорт.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Bu mənzil təkcə sizin üçün deyil, gələcək nəsliniz üçün də dəyərli bir investisiyadır.","ru":"Эта квартира является ценной инвестицией не только для вас, но и для вашего будущего поколения.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Erkən rezervasiya ilə ən sərfəli qiymət və yaxşı mərtəbə seçimi imkanı əldə edirsiniz.","ru":"Благодаря раннему бронированию вы получаете самую выгодную цену и возможность выбора хорошего этажа.","section":"Презентация объекта и его преимуществ"},
+  {"az":"İllik 4-5% icarə gəliri və 15% dəyər artımı ilə bu investisiya özünü tez amortizasiya edəcək.","ru":"С годовой арендной доходностью 4-5% и ростом стоимости на 15% эти инвестиции быстро окупятся.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Dünyanın ən məşhur restoranları və dəb butikları ilə üzbəüz yaşayacaqsınız.","ru":"Вы будете жить лицом к лицу с самыми известными ресторанами и модными бутиками мира.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Sahil xəttində və şəhər mərkəzində olmaq kimi nadir fürsət təklif edirik.","ru":"Мы предлагаем редкую возможность находиться на береговой линии и в центре города.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Sizə layihənin master-planını və interyer dizayn nümunələrini şəxsî ofisimizdə göstərməyi təklif edirəm.","ru":"Предлагаю показать вам мастер-план проекта и образцы дизайна интерьера в нашем личном офисе.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Gəlin, ofisimizdə görüşək və sizin üçün dəqiq bir finansal hesablama hazırlayaq.","ru":"Давайте встретимся в нашем офисе и подготовим для вас точный финансовый расчет.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Şəxsən gəldikdə, mənzərəni və mühiti hiss edə biləcəksiniz. Bu, telefon danışığından daha effektivdir.","ru":"При личном визите вы сможете прочувствовать вид и атмосферу. Это эффективнее, чем разговор по телефону.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Ofisimizdə sizi içki və sərin su ilə qarşılayacağıq.","ru":"В нашем офисе мы встретим вас напитками и прохладительной водой.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Gəlin, bu fürsəti əldən verməyək.","ru":"Давайте не упустим эту возможность.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Bu həftə sonu sizə vaxt ayıra bilərsinizmi?","ru":"Можете ли вы выделить время на этих выходных?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Sizin üçün ən əlverişli vaxt nə vaxtdır? Səhər, günorta və ya axşam?","ru":"Какое время для вас наиболее удобно? Утро, день или вечер?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Cümə günü, saat 15:00 sizə uyğundurmu?","ru":"Подходит ли вам пятница в 15:00?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Ofisimizə gəlmək sizin üçün rahatdırmı? Yoxsa, sizə biz gələk?","ru":"Вам удобно приехать в наш офис? Или нам приехать к вам?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Görüşü təsdiq etmək üçün ünvana SMS göndərim?","ru":"Отправить SMS с адресом для подтверждения встречи?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Görünür, bu mənzil sizin bütün istəklərinizə cavab verir.","ru":"Похоже, эта квартира отвечает всем вашим пожеланиям.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sizcə, bu fürsəti əldən verməyək?","ru":"Как вы думаете, давайте не упустим эту возможность?","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sifarişi rəsmiləşdirmək üçün lazım olan sənədləri hazırlayım?","ru":"Подготовить необходимые документы для оформления заказа?","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"İlkin ödənişi etmək üçün ən rahat üsul hansıdır?","ru":"Какой способ внесения первоначального взноса для вас наиболее удобен?","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Təbrik edirəm! Düzgün qərar qəbul etdiniz.","ru":"Поздравляю! Вы приняли правильное решение.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sizə mənzilin təmirinə kömək etmək üçün etibarlı bir şirkət təqdim edə bilərəm.","ru":"Могу порекомендовать надежную компанию для помощи в ремонте квартиры.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"İcarəyə vermək istəsəniz, bizim icarə idarəetmə xidmətimiz var.","ru":"Если захотите сдать в аренду, у нас есть услуга управления арендой.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Hər hansı bir sualınız olsa, çəkinmədən mənimlə əlaqə saxlayın.","ru":"Если у вас возникнут какие-либо вопросы, не стесняйтесь связываться со мной.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Mənzilin təhvil verilmə mərhələsində sizə müşayiət edəcəyəm.","ru":"Я буду сопровождать вас на этапе сдачи квартиры.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sizi investisiya gəlirlərimiz haqqında məlumatlandıracağam.","ru":"Я буду информировать вас о наших инвестиционных доходах.","section":"Закрытие сделки и постпродажное обслуживание"}
+            ];
             let currentPhraseIndex = 0;
             const phraseAz = document.querySelector('.phrase-az');
             const phraseRu = document.querySelector('.phrase-ru');
