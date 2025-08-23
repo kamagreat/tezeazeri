@@ -1121,9 +1121,12 @@
                 usernameDisplay.textContent = currentUser.username;
                 
                 // Обновляем статистику
-                document.querySelector('.stat-value:nth-child(1)').textContent = currentUser.learnedWords;
-                document.querySelector('.stat-value:nth-child(2)').textContent = currentUser.correctAnswers + '%';
-                document.querySelector('.stat-value:nth-child(3)').textContent = currentUser.streak;
+                const overallStats = document.querySelectorAll('.stats .stat-value');
+                if (overallStats && overallStats.length >= 3) {
+                    overallStats[0].textContent = currentUser.learnedWords;
+                    overallStats[1].textContent = currentUser.correctAnswers + '%';
+                    overallStats[2].textContent = currentUser.streak;
+                }
             }
             
             // Режимы работы приложения
@@ -1250,10 +1253,12 @@
                 quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${quizDB.length}`;
                 
                 // Обновляем статистику
-                document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
-                document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
-                document.querySelector('.quiz-container .stat-value:nth-child(3)').textContent = 
-                    totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) + '%' : '0%';
+                const quizStats = document.querySelectorAll('.quiz-container .stat-value');
+                if (quizStats && quizStats.length >= 3) {
+                    quizStats[0].textContent = correctAnswers;
+                    quizStats[1].textContent = totalAnswers - correctAnswers;
+                    quizStats[2].textContent = totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) + '%' : '0%';
+                }
             }
             
             options.forEach(option => {
@@ -1280,10 +1285,12 @@
                     result.style.display = 'block';
                     
                     // Обновляем статистику
-                    document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
-                    document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
-                    document.querySelector('.quiz-container .stat-value:nth-child(3)').textContent = 
-                        Math.round((correctAnswers / totalAnswers) * 100) + '%';
+                    const quizStats = document.querySelectorAll('.quiz-container .stat-value');
+                    if (quizStats && quizStats.length >= 3) {
+                        quizStats[0].textContent = correctAnswers;
+                        quizStats[1].textContent = totalAnswers - correctAnswers;
+                        quizStats[2].textContent = Math.round((correctAnswers / totalAnswers) * 100) + '%';
+                    }
                     
                     // Блокируем все варианты после ответа
                     options.forEach(opt => {
