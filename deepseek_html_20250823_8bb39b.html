@@ -1272,8 +1272,9 @@
             document.querySelector('.quiz-container').insertBefore(roundBadgeEl, document.querySelector('.quiz-container').firstChild);
             
             function startNewQuiz() {
-                const pool = getFilteredWords();
-                if (!pool.length) { return; }
+                const rawPool = getFilteredWords();
+                if (!rawPool.length) { return; }
+                const pool = dedupeByAz(rawPool);
                 // сформировать общий перемешанный пул для кругов
                 quizPoolShuffled = shuffleArray(pool.slice());
                 totalRounds = Math.ceil(quizPoolShuffled.length / quizChunkSize) || 1;
@@ -1516,6 +1517,14 @@
                     [arr[i], arr[j]] = [arr[j], arr[i]];
                 }
                 return arr;
+            }
+            function dedupeByAz(arr) {
+                const seen = new Set();
+                const out = [];
+                for (const w of arr) {
+                    if (!seen.has(w.az)) { seen.add(w.az); out.push(w); }
+                }
+                return out;
             }
             function reshuffleLearnWords() {
                 const pool = getFilteredWords();
