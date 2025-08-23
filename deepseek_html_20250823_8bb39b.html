@@ -614,6 +614,19 @@
                 </div>
             </div>
             
+            <div class="phrases-container" style="display: none;">
+                <div class="card">
+                    <div class="word-az phrase-az">—</div>
+                    <div class="word-ru phrase-ru" style="display:none;">—</div>
+                    <div class="word-info phrase-section" style="display:none;">—</div>
+                    <div class="controls">
+                        <button class="control-btn" id="show-phrase-translation"><i class="fas fa-eye"></i> Показать перевод</button>
+                        <button class="control-btn" id="next-phrase"><i class="fas fa-arrow-right"></i> Следующая фраза</button>
+                    </div>
+                </div>
+                <div class="progress phrase-progress">Фраза 1 из —</div>
+            </div>
+            
             <div class="stats-container" id="statsContainer">
                 <h2 class="stats-header"><i class="fas fa-chart-pie"></i> Статистика обучения</h2>
                 <div class="stats-content">
@@ -701,8 +714,7 @@
             ];
 
             const importedWordsDB = [
-// ВСТАВЛЕННЫЕ СЛОВА ИЗ vocab_parsed.json
-// Начало массива
+
 {"az":"Daşınmaz əmlak","ru":"Недвижимость, недвижимое имущество","category":"estate","example":"","level":"Основной"},
 {"az":"Mənzil","ru":"Квартира","category":"estate","example":"","level":"Основной"},
 {"az":"Yeni tikili","ru":"Новостройка","category":"estate","example":"","level":"Основной"},
@@ -1133,6 +1145,7 @@
             const modeButtons = document.querySelectorAll('.mode-btn');
             const learnMode = document.querySelector('.learn-mode');
             const quizMode = document.querySelector('.quiz-container');
+            const phrasesMode = document.querySelector('.phrases-container');
             
             modeButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -1146,16 +1159,19 @@
                         learnMode.style.display = 'block';
                         quizMode.style.display = 'none';
                         statsContainer.style.display = 'none';
+                        phrasesMode.style.display = 'none';
                     } else if (mode === 'quiz') {
                         learnMode.style.display = 'none';
                         quizMode.style.display = 'block';
                         statsContainer.style.display = 'none';
+                        phrasesMode.style.display = 'none';
                         startNewQuiz();
                     } else if (mode === 'phrases') {
                         learnMode.style.display = 'none';
                         quizMode.style.display = 'none';
                         statsContainer.style.display = 'none';
-                        alert('Режим изучения фраз и диалогов скоро будет добавлен!');
+                        phrasesMode.style.display = 'block';
+                        startPhrases();
                     }
                 });
             });
@@ -1186,6 +1202,7 @@
                 wordRu.style.display = 'block';
                 example.style.display = 'block';
                 wordInfo.style.display = 'block';
+                recordLearnShown();
             });
             
             nextWordBtn.addEventListener('click', function() {
@@ -1315,6 +1332,60 @@
             
             // Показываем первое слово при загрузке
             showCurrentWord();
+
+            // Данные фраз (вставка из разобранного файла)
+            const phrasesDB = [
+
+            let currentPhraseIndex = 0;
+            const phraseAz = document.querySelector('.phrase-az');
+            const phraseRu = document.querySelector('.phrase-ru');
+            const phraseSection = document.querySelector('.phrase-section');
+            const phraseProgress = document.querySelector('.phrase-progress');
+            const showPhraseBtn = document.getElementById('show-phrase-translation');
+            const nextPhraseBtn = document.getElementById('next-phrase');
+            
+            function startPhrases() {
+                currentPhraseIndex = 0;
+                showCurrentPhrase();
+            }
+            function showCurrentPhrase() {
+                if (!phrasesDB.length) {
+                    phraseAz.textContent = 'Фразы не найдены';
+                    return;
+                }
+                const p = phrasesDB[currentPhraseIndex];
+                phraseAz.textContent = p.az;
+                phraseRu.textContent = p.ru;
+                phraseSection.textContent = p.section;
+                phraseRu.style.display = 'none';
+                phraseSection.style.display = 'none';
+                phraseProgress.textContent = `Фраза ${currentPhraseIndex + 1} из ${phrasesDB.length}`;
+            }
+            showPhraseBtn && showPhraseBtn.addEventListener('click', function() {
+                phraseRu.style.display = 'block';
+                phraseSection.style.display = 'block';
+                saveUserProgress('phrases_revealed', 1);
+            });
+            nextPhraseBtn && nextPhraseBtn.addEventListener('click', function() {
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrasesDB.length;
+                showCurrentPhrase();
+            });
+
+            // Простая статистика per-user в localStorage
+            function getUserKey(key) {
+                return currentUser ? `az_app_${currentUser.username}_${key}` : null;
+            }
+            function saveUserProgress(key, delta) {
+                const k = getUserKey(key);
+                if (!k) return;
+                const val = parseInt(localStorage.getItem(k) || '0', 10) + (delta||0);
+                localStorage.setItem(k, String(val));
+            }
+            function recordLearnShown() { saveUserProgress('learn_shown', 1); }
+            function recordQuizAnswer(correct) {
+                saveUserProgress('quiz_total', 1);
+                if (correct) saveUserProgress('quiz_correct', 1);
+            }
         });
     </script>
 </body>

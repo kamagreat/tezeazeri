@@ -1,0 +1,1976 @@
+[
+  {
+    "az": "Daşınmaz əmlak",
+    "ru": "Недвижимость, недвижимое имущество",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Mənzil",
+    "ru": "Квартира",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yeni tikili",
+    "ru": "Новостройка",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yaşayış kompleksi",
+    "ru": "Жилой комплекс",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Layihə",
+    "ru": "Проект",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Resort",
+    "ru": "Курорт",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kurort",
+    "ru": "Курорт",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yaşayış sahəsi",
+    "ru": "Жилая площадь",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Duplex / Daxmalı ev",
+    "ru": "Дуплекс (дом на двух хозяев)",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Studiya",
+    "ru": "Студия (квартира)",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yataq otağı",
+    "ru": "Спальня",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Lüks mənzil",
+    "ru": "Люксовая квартира",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Debdebəli ev",
+    "ru": "Роскошный дом",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Möhtəşem ev",
+    "ru": "Великолепный/шикарный дом",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tikilməkdə olan",
+    "ru": "Строящийся",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tikintisi tamamlanan",
+    "ru": "Построенный, завершенный",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Məskunlaşmaq",
+    "ru": "Заселяться",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sakin",
+    "ru": "Житель, резидент",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ərazisi",
+    "ru": "Территория, площадь",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sahil",
+    "ru": "Побережье, берег",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xəzər dənizi",
+    "ru": "Каспийское море",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Paytaxt",
+    "ru": "Столица",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Şəhər",
+    "ru": "Город",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Şəhərciyik",
+    "ru": "Городок, комплекс",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yaxt Klubu",
+    "ru": "Яхт-клуб",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İnzibati bina",
+    "ru": "Административное здание",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kommersiya binaları",
+    "ru": "Коммерческие здания",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ticarət sahəsi",
+    "ru": "Торговая площадь/зона",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ofis",
+    "ru": "Офис",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Otel",
+    "ru": "Отель",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Restoran",
+    "ru": "Ресторан",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kafe",
+    "ru": "Кафе",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Bar",
+    "ru": "Бар",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Parkinq",
+    "ru": "Парковка",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yeraltı parkinq",
+    "ru": "Подземная парковка",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yerüstü parkinq",
+    "ru": "Надземная парковка",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Hovuz",
+    "ru": "Бассейн",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Açıq hovuz",
+    "ru": "Открытый бассейн",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qapalı hovuz",
+    "ru": "Закрытый бассейн",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Su parkı",
+    "ru": "Аквапарк",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çimərlik",
+    "ru": "Пляж",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çimərlik zonası",
+    "ru": "Пляжная зона",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Uşaq meydançası",
+    "ru": "Детская площадка",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sosial obyekt",
+    "ru": "Социальный объект",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İnfrastruktur",
+    "ru": "Инфраструктура",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Master-plan",
+    "ru": "Генеральный план",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dizayn",
+    "ru": "Дизайн",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Interyer",
+    "ru": "Интерьер",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Eksteryer",
+    "ru": "Экстерьер",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Məkan",
+    "ru": "Пространство, помещение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Daxili məkan",
+    "ru": "Внутреннее пространство",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Plan",
+    "ru": "План (планировка)",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Mənzəre",
+    "ru": "Вид, панорама",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gözəl mənzərə",
+    "ru": "Красивый вид",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xəzərə mənzərəsi",
+    "ru": "Вид на Каспийское море",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tebii gözəllik",
+    "ru": "Природная красота",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İnvestisiya",
+    "ru": "Инвестиция",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İnvestor",
+    "ru": "Инвестор",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gəlir",
+    "ru": "Доход",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gəlirlilik",
+    "ru": "Доходность",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İllik gəlir",
+    "ru": "Годовой доход",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İcarə",
+    "ru": "Аренда",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kirayə",
+    "ru": "Аренда (чаще о жилье)",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İcarəyə vermək",
+    "ru": "Сдавать в аренду",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kirayə vermək",
+    "ru": "Сдавать в аренду",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İcarə haqqı",
+    "ru": "Плата за аренду",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kirayə haqqı",
+    "ru": "Арендная плата",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qiymət",
+    "ru": "Цена",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Giymət",
+    "ru": "Цена (вариация написания)",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dəyər",
+    "ru": "Стоимость, ценность",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Artım",
+    "ru": "Рост, увеличение",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İllik artım",
+    "ru": "Годовой рост",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qiymətlərin artımı",
+    "ru": "Рост цен",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Mənfəət",
+    "ru": "Прибыль",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sərfəli",
+    "ru": "Выгодный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Perspektivli",
+    "ru": "Перспективный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müqayisə",
+    "ru": "Сравнение",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Hesablamа",
+    "ru": "Расчет",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Finansal hesablamа",
+    "ru": "Финансовый расчет",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ödəniş",
+    "ru": "Платеж",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Aylıq ödəniş",
+    "ru": "Ежемесячный платеж",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İlkin ödəniş",
+    "ru": "Первоначальный взнос",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kredit",
+    "ru": "Кредит",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İpoteka",
+    "ru": "Ипотека",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müqavilə",
+    "ru": "Договор, контракт",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Saziş",
+    "ru": "Соглашение",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Alış",
+    "ru": "Покупка",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Satış",
+    "ru": "Продажа",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Alıcı",
+    "ru": "Покупатель",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Satıcı",
+    "ru": "Продавец",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müştəri",
+    "ru": "Клиент",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sifariş",
+    "ru": "Заказ",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təklif",
+    "ru": "Предложение",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təqdim etmək",
+    "ru": "Представлять, предлагать",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təşviq",
+    "ru": "Стимулирование, акция",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Fürsət",
+    "ru": "Возможность, шанс",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Bazar",
+    "ru": "Рынок",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Daşınmaz əmlak bazarı",
+    "ru": "Рынок недвижимости",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tələb",
+    "ru": "Спрос",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Bazar dəyəri",
+    "ru": "Рыночная стоимость",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İnkişaf",
+    "ru": "Развитие",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İqtisadiyyat",
+    "ru": "Экономика",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Urbanizm",
+    "ru": "Урбанизм",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ağıllı urbanizm",
+    "ru": "Умный урбанизм",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Şəhərsalma",
+    "ru": "Градостроительство",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tikinti",
+    "ru": "Строительство",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tikmək",
+    "ru": "Строить",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tikintinin tamamlanması",
+    "ru": "Завершение строительства",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tikinti şirkəti",
+    "ru": "Строительная компания",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Zavod",
+    "ru": "Завод",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Layihələndirmə",
+    "ru": "Проектирование",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Memar",
+    "ru": "Архитектор",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dizayner",
+    "ru": "Дизайнер",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İnşaatçı",
+    "ru": "Строитель",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Material",
+    "ru": "Материал",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Keyfiyyətli material",
+    "ru": "Качественный материал",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Texnologiya",
+    "ru": "Технология",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müasir texnologiyalar",
+    "ru": "Современные технологии",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Bina",
+    "ru": "Здание",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Körpü",
+    "ru": "Мост",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yol",
+    "ru": "Дорога",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İşıqlandırma",
+    "ru": "Освещение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Landşaft dizaynı",
+    "ru": "Ландшафтный дизайн",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yaşıllıq",
+    "ru": "Озеленение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İstilik",
+    "ru": "Отопление",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Soyutma",
+    "ru": "Охлаждение, кондиционирование",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ventilyasiya",
+    "ru": "Вентиляция",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Su təchizatı",
+    "ru": "Водоснабжение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kanalizasiya",
+    "ru": "Канализация",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Elektrik təchizatı",
+    "ru": "Электроснабжение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qaz təchizatı",
+    "ru": "Газоснабжение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təmir",
+    "ru": "Ремонт",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Bərpa",
+    "ru": "Реставрация, восстановление",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sökülmə",
+    "ru": "Снос",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yenidənqurma",
+    "ru": "Перестройка, реконструкция",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xəritə",
+    "ru": "Карта",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çertyoj",
+    "ru": "Чертеж",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ölçü",
+    "ru": "Размер, измерение",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kvadrat metr (kv.m)",
+    "ru": "Квадратный метр (кв.м)",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Hektar",
+    "ru": "Гектар",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çəki",
+    "ru": "Вес",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Hündürlük",
+    "ru": "Высота",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dərinlik",
+    "ru": "Глубина",
+    "category": "estate",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Satış mərkəzi",
+    "ru": "Центр продаж",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Məlumat mərkəzi",
+    "ru": "Информационный центр",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Şou-rум",
+    "ru": "Шоу-рум",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Eksklyuziv",
+    "ru": "Эксклюзивный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Premium",
+    "ru": "Премиум",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Lüks",
+    "ru": "Люкс",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müraciət",
+    "ru": "Обращение, заявка",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Soruş",
+    "ru": "Запрос",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təklif etmək",
+    "ru": "Предлагать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Göstərmək",
+    "ru": "Показывать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çatdırmaq",
+    "ru": "Доставлять",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yer",
+    "ru": "Место",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ünvan",
+    "ru": "Адрес",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Əlaqə",
+    "ru": "Связь, контакт",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Telefon",
+    "ru": "Телефон",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "E-poçt",
+    "ru": "E-mail",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Veb-sayt",
+    "ru": "Веб-сайт",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Reklam",
+    "ru": "Реклама",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tədbir",
+    "ru": "Мероприятие",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təqdimat",
+    "ru": "Презентация",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Görüş",
+    "ru": "Встреча",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Razılaşma",
+    "ru": "Согласие, договоренность",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Nümayəndə",
+    "ru": "Представитель",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Agent",
+    "ru": "Агент",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Məsləhət",
+    "ru": "Совет, консультация",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xidmət",
+    "ru": "Услуга",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İcarə xidməti",
+    "ru": "Сервис по аренде",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qeydiyyat",
+    "ru": "Регистрация, учет",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qeydiyyat şöbəsi",
+    "ru": "Регистрационное отделение",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təhlükəsizlik",
+    "ru": "Безопасность",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təhlükəsizlik xidməti",
+    "ru": "Служба безопасности",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Konfrans zalı",
+    "ru": "Конференц-зал",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Spa",
+    "ru": "Спа",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Fitness mərkəzi",
+    "ru": "Фитнес-центр",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Səhiyyə mərkəzi",
+    "ru": "Медицинский центр",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dəyərli",
+    "ru": "Ценный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Rahat",
+    "ru": "Комфортный, удобный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Rahatlıq",
+    "ru": "Комфорт, удобство",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İncəlik",
+    "ru": "Изящество, тонкость",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Zəriflik",
+    "ru": "Элегантность, утонченность",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dəbdəbə",
+    "ru": "Роскошь, помпезность",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Keyfiyyət",
+    "ru": "Качество",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Zəmanət",
+    "ru": "Гарантия",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təmiz",
+    "ru": "Чистый",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təravətli",
+    "ru": "Свежий",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Şərait",
+    "ru": "Условия",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müasir şərait",
+    "ru": "Современные условия",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Mükəmməl",
+    "ru": "Идеальный, превосходный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Unikal",
+    "ru": "Уникальный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Möhtəşem",
+    "ru": "Великолепный, шикарный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gözəl",
+    "ru": "Красивый",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Böyük",
+    "ru": "Большой",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kiçik",
+    "ru": "Маленький",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yüksək",
+    "ru": "Высокий",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Alçaq",
+    "ru": "Низкий",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Geniş",
+    "ru": "Широкий, просторный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dar",
+    "ru": "Узкий",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sərin",
+    "ru": "Прохладный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İsti",
+    "ru": "Теплый, горячий",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yeni",
+    "ru": "Новый",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Köhnə",
+    "ru": "Старый",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Parlaq",
+    "ru": "Яркий, блестящий",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tünd",
+    "ru": "Темный, насыщенный",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Açıq",
+    "ru": "Светлый, открытый",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Almaq",
+    "ru": "Покупать, брать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Satmaq",
+    "ru": "Продавать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Görmək",
+    "ru": "Видеть",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Baxmaq",
+    "ru": "Смотреть, рассматривать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Seçmək",
+    "ru": "Выбирать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İstəmək",
+    "ru": "Хотеть",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xahiş etmək",
+    "ru": "Просить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Soruşmaq",
+    "ru": "Спрашивать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Demək",
+    "ru": "Говорить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Danışmaq",
+    "ru": "Разговаривать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Razılaşmaq",
+    "ru": "Договариваться, соглашаться",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İmzalamaq",
+    "ru": "Подписывать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ödəmək",
+    "ru": "Платить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gəlmək",
+    "ru": "Приходить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Getmək",
+    "ru": "Уходить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Götürmək",
+    "ru": "Брать, забирать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qoymaq",
+    "ru": "Класть, ставить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qərar vermək",
+    "ru": "Принимать решение",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gözləmək",
+    "ru": "Ждать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Başa düşmək",
+    "ru": "Понимать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təsvir etmək",
+    "ru": "Описывать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müqayisə etmək",
+    "ru": "Сравнивать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Hesablamaq",
+    "ru": "Считать, вычислять",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Planlaşdırmaq",
+    "ru": "Планировать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təmsil etmək",
+    "ru": "Представлять (кого-то)",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qeyd etmək",
+    "ru": "Отмечать, записывать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təşkil etmək",
+    "ru": "Организовывать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Zəng etmək",
+    "ru": "Звонить",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Cavab vermək",
+    "ru": "Отвечать",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Təklif göndərmək",
+    "ru": "Отправлять предложение",
+    "category": "sales",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çirkin",
+    "ru": "Некрасивый",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Müasir",
+    "ru": "Современный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qədim",
+    "ru": "Древний",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Narahat",
+    "ru": "Неудобный, беспокойный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gəlirsiz",
+    "ru": "Невыгодный, бесприбыльный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sürətli",
+    "ru": "Быстрый",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yavaş",
+    "ru": "Медленный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Asan",
+    "ru": "Легкий",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çətin",
+    "ru": "Трудный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Ucuz",
+    "ru": "Дешевый",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Bahalı",
+    "ru": "Дорогой",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Aşağı",
+    "ru": "Низкий",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xoş",
+    "ru": "Приятный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Xoşagəlməz",
+    "ru": "Неприятный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çirkli",
+    "ru": "Грязный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İşıqlı",
+    "ru": "Светлый",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Qaranlıq",
+    "ru": "Темный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Soyuq",
+    "ru": "Холодный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Nəfis",
+    "ru": "Изысканный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Adi",
+    "ru": "Обычный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Əsas",
+    "ru": "Основной",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Əlavə",
+    "ru": "Дополнительный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tam",
+    "ru": "Полный, целый",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Boş",
+    "ru": "Пустой",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dolu",
+    "ru": "Полный",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Həmişə",
+    "ru": "Всегда",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Heç vaxt",
+    "ru": "Никогда",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tez-tez",
+    "ru": "Часто",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Nadirə",
+    "ru": "Редко",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Burada",
+    "ru": "Здесь",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Orada",
+    "ru": "Там",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Hər yerdə",
+    "ru": "Везде",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Heç yerdə",
+    "ru": "Нигде",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "İndi",
+    "ru": "Сейчас",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sonra",
+    "ru": "Потом",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Dünən",
+    "ru": "Вчера",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Sabah",
+    "ru": "Завтра",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Tez",
+    "ru": "Быстро, скоро",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Gec",
+    "ru": "Поздно",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Yaxşı",
+    "ru": "Хорошо",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Pis",
+    "ru": "Плохо",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Çox",
+    "ru": "Очень, много",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Az",
+    "ru": "Мало",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Biraz",
+    "ru": "Немного",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  },
+  {
+    "az": "Kifayət qədər",
+    "ru": "Достаточно",
+    "category": "business",
+    "example": "",
+    "level": "Основной"
+  }
+]
