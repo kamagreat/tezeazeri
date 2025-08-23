@@ -1,1 +1,4 @@
 127.0.0.1 - - [23/Aug/2025 08:05:19] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 08:10:14] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 08:10:14] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 08:10:15] "GET / HTTP/1.1" 200 -
