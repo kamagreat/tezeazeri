@@ -11,3 +11,11 @@ nohup: ignoring input
 127.0.0.1 - - [23/Aug/2025 10:00:39] code 404, message File not found
 127.0.0.1 - - [23/Aug/2025 10:00:39] "GET /robots.txt HTTP/1.1" 404 -
 127.0.0.1 - - [23/Aug/2025 10:00:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:43] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:44] "GET /words_all.json?_=1755948283790 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:44] "GET /phrases_all.json?_=1755948283790 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:44] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 11:24:44] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 11:25:21] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 11:25:21] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 11:25:21] "GET / HTTP/1.1" 200 -
