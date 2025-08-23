@@ -1063,6 +1063,10 @@
             let totalAnswers = 0;
             let generatedQuiz = [];
             let shuffledLearnWords = [];
+            let quizChunkSize = 25;
+            let quizPoolShuffled = [];
+            let currentRoundIndex = 0;
+            let totalRounds = 1;
             
             // Элементы интерфейса
             const authButtons = document.getElementById('authButtons');
@@ -1260,32 +1264,53 @@
             const nextQuestionBtn = document.getElementById('next-question');
             const questionElement = document.querySelector('.question');
             const quizProgress = document.querySelector('.quiz-container .progress');
+            const roundBadgeEl = document.createElement('div');
+            roundBadgeEl.style.textAlign = 'center';
+            roundBadgeEl.style.marginBottom = '10px';
+            roundBadgeEl.style.color = '#4a6491';
+            roundBadgeEl.style.fontWeight = '600';
+            document.querySelector('.quiz-container').insertBefore(roundBadgeEl, document.querySelector('.quiz-container').firstChild);
             
             function startNewQuiz() {
                 const pool = getFilteredWords();
                 if (!pool.length) { return; }
-                const shuffled = shuffleArray(pool.slice());
-                const takeN = Math.min(25, shuffled.length);
+                // сформировать общий перемешанный пул для кругов
+                quizPoolShuffled = shuffleArray(pool.slice());
+                totalRounds = Math.ceil(quizPoolShuffled.length / quizChunkSize) || 1;
+                currentRoundIndex = 0;
+                buildRound(currentRoundIndex);
+            }
+            function buildRound(roundIdx) {
+                const start = roundIdx * quizChunkSize;
+                const end = Math.min(start + quizChunkSize, quizPoolShuffled.length);
+                const slice = quizPoolShuffled.slice(start, end);
                 generatedQuiz = [];
-                for (let i = 0; i < takeN; i++) {
-                    const correctWord = shuffled[i];
-                    // собрать варианты: правильный + 3 отвлекающих из той же категории/пула
-                    const distractPool = pool.filter(w => w.az !== correctWord.az);
+                slice.forEach(correctWord => {
+                    const distractPool = quizPoolShuffled.filter(w => w.az !== correctWord.az);
                     const distractors = shuffleArray(distractPool.slice()).slice(0, 3);
-                    const options = [correctWord.ru, ...distractors.map(d => d.ru)];
-                    shuffleArray(options);
-                    const correctIndex = options.indexOf(correctWord.ru);
+                    const optionsArr = [correctWord.ru, ...distractors.map(d => d.ru)];
+                    shuffleArray(optionsArr);
+                    const correctIndex = optionsArr.indexOf(correctWord.ru);
                     generatedQuiz.push({
                         question: `Выберите правильный перевод для: "${correctWord.az}"`,
-                        options,
+                        options: optionsArr,
                         correct: correctIndex,
                         explanation: `${correctWord.az} — ${correctWord.ru}`
                     });
-                }
+                });
                 currentQuizIndex = 0;
                 correctAnswers = 0;
                 totalAnswers = 0;
+                roundBadgeEl.textContent = `Круг ${roundIdx + 1} из ${totalRounds}`;
                 showQuestion();
+            }
+            function goToNextRound() {
+                if (currentRoundIndex + 1 < totalRounds) {
+                    currentRoundIndex++;
+                    buildRound(currentRoundIndex);
+                } else {
+                    roundBadgeEl.textContent = `Круги завершены (${totalRounds})`;
+                }
             }
             function showQuestion() {
                 const q = generatedQuiz[currentQuizIndex];
@@ -1339,8 +1364,12 @@
                     opt.style.pointerEvents = 'auto';
                 });
                 result.style.display = 'none';
-                currentQuizIndex = (currentQuizIndex + 1) % generatedQuiz.length;
-                showQuestion();
+                if (currentQuizIndex + 1 < generatedQuiz.length) {
+                    currentQuizIndex++;
+                    showQuestion();
+                } else {
+                    goToNextRound();
+                }
             });
 
             // Показываем первое слово при загрузке
