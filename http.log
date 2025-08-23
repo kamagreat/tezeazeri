@@ -1,0 +1,37 @@
+nohup: ignoring input
+127.0.0.1 - - [23/Aug/2025 09:59:44] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 09:59:45] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 09:59:45] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 09:59:49] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 09:59:50] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 09:59:50] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 09:59:56] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 09:59:57] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 09:59:57] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 10:00:39] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 10:00:39] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 10:00:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:43] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:44] "GET /words_all.json?_=1755948283790 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:44] "GET /phrases_all.json?_=1755948283790 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:24:44] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 11:24:44] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 11:25:21] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 11:25:21] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 11:25:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:35:44] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:35:45] "GET /words_all.json?_=1755948944567 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:35:45] "GET /phrases_all.json?_=1755948944567 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 11:35:45] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 11:35:45] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 11:36:21] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 11:36:21] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 11:36:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 12:15:45] "GET /deepseek_html_20250823_8bb39b.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 12:15:46] "GET /words_all.json?_=1755951345723 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 12:15:46] "GET /phrases_all.json?_=1755951345723 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2025 12:15:46] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 12:15:46] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 12:16:24] code 404, message File not found
+127.0.0.1 - - [23/Aug/2025 12:16:24] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [23/Aug/2025 12:16:25] "GET / HTTP/1.1" 200 -

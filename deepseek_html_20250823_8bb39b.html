@@ -614,6 +614,19 @@
                 </div>
             </div>
             
+            <div class="phrases-container" style="display: none;">
+                <div class="card">
+                    <div class="word-az phrase-az">—</div>
+                    <div class="word-ru phrase-ru" style="display:none;">—</div>
+                    <div class="word-info phrase-section" style="display:none;">—</div>
+                    <div class="controls">
+                        <button class="control-btn" id="show-phrase-translation"><i class="fas fa-eye"></i> Показать перевод</button>
+                        <button class="control-btn" id="next-phrase"><i class="fas fa-arrow-right"></i> Следующая фраза</button>
+                    </div>
+                </div>
+                <div class="progress phrase-progress">Фраза 1 из —</div>
+            </div>
+            
             <div class="stats-container" id="statsContainer">
                 <h2 class="stats-header"><i class="fas fa-chart-pie"></i> Статистика обучения</h2>
                 <div class="stats-content">
@@ -677,7 +690,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Проверенная база данных слов
-            const wordsDB = [
+            const baseWordsDB = [
                 { az: "Daşınmaz əmlak", ru: "Недвижимость", category: "estate", example: "Bu daşınmaz əmlak yüksək gəlir gətirir.", level: "Основной" },
                 { az: "Mənzil", ru: "Квартира", category: "estate", example: "Mənzil dənizə yaxın yerləşir.", level: "Основной" },
                 { az: "Yeni tikili", ru: "Новостройка", category: "estate", example: "Yeni tikililər müasir standartlara cavab verir.", level: "Основной" },
@@ -699,7 +712,307 @@
                 { az: "Kateqoriya", ru: "Категория", category: "business", example: "Bu, yüksək kateqoriyalı mənzildir.", level: "Средний" },
                 { az: "Təmir", ru: "Ремонт", category: "estate", example: "Mənzildə təmir lazımdır.", level: "Основной" }
             ];
-            
+
+            const importedWordsDB = [
+
+{"az":"Daşınmaz əmlak","ru":"Недвижимость, недвижимое имущество","category":"estate","example":"","level":"Основной"},
+{"az":"Mənzil","ru":"Квартира","category":"estate","example":"","level":"Основной"},
+{"az":"Yeni tikili","ru":"Новостройка","category":"estate","example":"","level":"Основной"},
+{"az":"Yaşayış kompleksi","ru":"Жилой комплекс","category":"estate","example":"","level":"Основной"},
+{"az":"Layihə","ru":"Проект","category":"estate","example":"","level":"Основной"},
+{"az":"Resort","ru":"Курорт","category":"estate","example":"","level":"Основной"},
+{"az":"Kurort","ru":"Курорт","category":"estate","example":"","level":"Основной"},
+{"az":"Yaşayış sahəsi","ru":"Жилая площадь","category":"estate","example":"","level":"Основной"},
+{"az":"Duplex / Daxmalı ev","ru":"Дуплекс (дом на двух хозяев)","category":"estate","example":"","level":"Основной"},
+{"az":"Studiya","ru":"Студия (квартира)","category":"estate","example":"","level":"Основной"},
+{"az":"Yataq otağı","ru":"Спальня","category":"estate","example":"","level":"Основной"},
+{"az":"Lüks mənzil","ru":"Люксовая квартира","category":"estate","example":"","level":"Основной"},
+{"az":"Debdebəli ev","ru":"Роскошный дом","category":"estate","example":"","level":"Основной"},
+{"az":"Möhtəşem ev","ru":"Великолепный/шикарный дом","category":"estate","example":"","level":"Основной"},
+{"az":"Tikilməkdə olan","ru":"Строящийся","category":"estate","example":"","level":"Основной"},
+{"az":"Tikintisi tamamlanan","ru":"Построенный, завершенный","category":"estate","example":"","level":"Основной"},
+{"az":"Məskunlaşmaq","ru":"Заселяться","category":"estate","example":"","level":"Основной"},
+{"az":"Sakin","ru":"Житель, резидент","category":"estate","example":"","level":"Основной"},
+{"az":"Ərazisi","ru":"Территория, площадь","category":"estate","example":"","level":"Основной"},
+{"az":"Sahil","ru":"Побережье, берег","category":"estate","example":"","level":"Основной"},
+{"az":"Xəzər dənizi","ru":"Каспийское море","category":"estate","example":"","level":"Основной"},
+{"az":"Paytaxt","ru":"Столица","category":"estate","example":"","level":"Основной"},
+{"az":"Şəhər","ru":"Город","category":"estate","example":"","level":"Основной"},
+{"az":"Şəhərciyik","ru":"Городок, комплекс","category":"estate","example":"","level":"Основной"},
+{"az":"Yaxt Klubu","ru":"Яхт-клуб","category":"estate","example":"","level":"Основной"},
+{"az":"İnzibati bina","ru":"Административное здание","category":"estate","example":"","level":"Основной"},
+{"az":"Kommersiya binaları","ru":"Коммерческие здания","category":"estate","example":"","level":"Основной"},
+{"az":"Ticarət sahəsi","ru":"Торговая площадь/зона","category":"estate","example":"","level":"Основной"},
+{"az":"Ofis","ru":"Офис","category":"estate","example":"","level":"Основной"},
+{"az":"Otel","ru":"Отель","category":"estate","example":"","level":"Основной"},
+{"az":"Restoran","ru":"Ресторан","category":"estate","example":"","level":"Основной"},
+{"az":"Kafe","ru":"Кафе","category":"estate","example":"","level":"Основной"},
+{"az":"Bar","ru":"Бар","category":"estate","example":"","level":"Основной"},
+{"az":"Parkinq","ru":"Парковка","category":"estate","example":"","level":"Основной"},
+{"az":"Yeraltı parkinq","ru":"Подземная парковка","category":"estate","example":"","level":"Основной"},
+{"az":"Yerüstü parkinq","ru":"Надземная парковка","category":"estate","example":"","level":"Основной"},
+{"az":"Hovuz","ru":"Бассейн","category":"estate","example":"","level":"Основной"},
+{"az":"Açıq hovuz","ru":"Открытый бассейн","category":"estate","example":"","level":"Основной"},
+{"az":"Qapalı hovuz","ru":"Закрытый бассейн","category":"estate","example":"","level":"Основной"},
+{"az":"Su parkı","ru":"Аквапарк","category":"estate","example":"","level":"Основной"},
+{"az":"Çimərlik","ru":"Пляж","category":"estate","example":"","level":"Основной"},
+{"az":"Çimərlik zonası","ru":"Пляжная зона","category":"estate","example":"","level":"Основной"},
+{"az":"Uşaq meydançası","ru":"Детская площадка","category":"estate","example":"","level":"Основной"},
+{"az":"Sosial obyekt","ru":"Социальный объект","category":"estate","example":"","level":"Основной"},
+{"az":"İnfrastruktur","ru":"Инфраструктура","category":"estate","example":"","level":"Основной"},
+{"az":"Master-plan","ru":"Генеральный план","category":"estate","example":"","level":"Основной"},
+{"az":"Dizayn","ru":"Дизайн","category":"estate","example":"","level":"Основной"},
+{"az":"Interyer","ru":"Интерьер","category":"estate","example":"","level":"Основной"},
+{"az":"Eksteryer","ru":"Экстерьер","category":"estate","example":"","level":"Основной"},
+{"az":"Məkan","ru":"Пространство, помещение","category":"estate","example":"","level":"Основной"},
+{"az":"Daxili məkan","ru":"Внутреннее пространство","category":"estate","example":"","level":"Основной"},
+{"az":"Plan","ru":"План (планировка)","category":"estate","example":"","level":"Основной"},
+{"az":"Mənzəre","ru":"Вид, панорама","category":"estate","example":"","level":"Основной"},
+{"az":"Gözəl mənzərə","ru":"Красивый вид","category":"estate","example":"","level":"Основной"},
+{"az":"Xəzərə mənzərəsi","ru":"Вид на Каспийское море","category":"estate","example":"","level":"Основной"},
+{"az":"Tebii gözəllik","ru":"Природная красота","category":"estate","example":"","level":"Основной"},
+{"az":"İnvestisiya","ru":"Инвестиция","category":"business","example":"","level":"Основной"},
+{"az":"İnvestor","ru":"Инвестор","category":"business","example":"","level":"Основной"},
+{"az":"Gəlir","ru":"Доход","category":"business","example":"","level":"Основной"},
+{"az":"Gəlirlilik","ru":"Доходность","category":"business","example":"","level":"Основной"},
+{"az":"İllik gəlir","ru":"Годовой доход","category":"business","example":"","level":"Основной"},
+{"az":"İcarə","ru":"Аренда","category":"business","example":"","level":"Основной"},
+{"az":"Kirayə","ru":"Аренда (чаще о жилье)","category":"business","example":"","level":"Основной"},
+{"az":"İcarəyə vermək","ru":"Сдавать в аренду","category":"business","example":"","level":"Основной"},
+{"az":"Kirayə vermək","ru":"Сдавать в аренду","category":"business","example":"","level":"Основной"},
+{"az":"İcarə haqqı","ru":"Плата за аренду","category":"business","example":"","level":"Основной"},
+{"az":"Kirayə haqqı","ru":"Арендная плата","category":"business","example":"","level":"Основной"},
+{"az":"Qiymət","ru":"Цена","category":"business","example":"","level":"Основной"},
+{"az":"Giymət","ru":"Цена (вариация написания)","category":"business","example":"","level":"Основной"},
+{"az":"Dəyər","ru":"Стоимость, ценность","category":"business","example":"","level":"Основной"},
+{"az":"Artım","ru":"Рост, увеличение","category":"business","example":"","level":"Основной"},
+{"az":"İllik artım","ru":"Годовой рост","category":"business","example":"","level":"Основной"},
+{"az":"Qiymətlərin artımı","ru":"Рост цен","category":"business","example":"","level":"Основной"},
+{"az":"Mənfəət","ru":"Прибыль","category":"business","example":"","level":"Основной"},
+{"az":"Sərfəli","ru":"Выгодный","category":"business","example":"","level":"Основной"},
+{"az":"Perspektivli","ru":"Перспективный","category":"business","example":"","level":"Основной"},
+{"az":"Müqayisə","ru":"Сравнение","category":"business","example":"","level":"Основной"},
+{"az":"Hesablamа","ru":"Расчет","category":"business","example":"","level":"Основной"},
+{"az":"Finansal hesablamа","ru":"Финансовый расчет","category":"business","example":"","level":"Основной"},
+{"az":"Ödəniş","ru":"Платеж","category":"business","example":"","level":"Основной"},
+{"az":"Aylıq ödəniş","ru":"Ежемесячный платеж","category":"business","example":"","level":"Основной"},
+{"az":"İlkin ödəniş","ru":"Первоначальный взнос","category":"business","example":"","level":"Основной"},
+{"az":"Kredit","ru":"Кредит","category":"business","example":"","level":"Основной"},
+{"az":"İpoteka","ru":"Ипотека","category":"business","example":"","level":"Основной"},
+{"az":"Müqavilə","ru":"Договор, контракт","category":"business","example":"","level":"Основной"},
+{"az":"Saziş","ru":"Соглашение","category":"business","example":"","level":"Основной"},
+{"az":"Alış","ru":"Покупка","category":"business","example":"","level":"Основной"},
+{"az":"Satış","ru":"Продажа","category":"business","example":"","level":"Основной"},
+{"az":"Alıcı","ru":"Покупатель","category":"business","example":"","level":"Основной"},
+{"az":"Satıcı","ru":"Продавец","category":"business","example":"","level":"Основной"},
+{"az":"Müştəri","ru":"Клиент","category":"business","example":"","level":"Основной"},
+{"az":"Sifariş","ru":"Заказ","category":"business","example":"","level":"Основной"},
+{"az":"Təklif","ru":"Предложение","category":"business","example":"","level":"Основной"},
+{"az":"Təqdim etmək","ru":"Представлять, предлагать","category":"business","example":"","level":"Основной"},
+{"az":"Təşviq","ru":"Стимулирование, акция","category":"business","example":"","level":"Основной"},
+{"az":"Fürsət","ru":"Возможность, шанс","category":"business","example":"","level":"Основной"},
+{"az":"Bazar","ru":"Рынок","category":"business","example":"","level":"Основной"},
+{"az":"Daşınmaz əmlak bazarı","ru":"Рынок недвижимости","category":"business","example":"","level":"Основной"},
+{"az":"Tələb","ru":"Спрос","category":"business","example":"","level":"Основной"},
+{"az":"Bazar dəyəri","ru":"Рыночная стоимость","category":"business","example":"","level":"Основной"},
+{"az":"İnkişaf","ru":"Развитие","category":"business","example":"","level":"Основной"},
+{"az":"İqtisadiyyat","ru":"Экономика","category":"business","example":"","level":"Основной"},
+{"az":"Urbanizm","ru":"Урбанизм","category":"business","example":"","level":"Основной"},
+{"az":"Ağıllı urbanizm","ru":"Умный урбанизм","category":"business","example":"","level":"Основной"},
+{"az":"Şəhərsalma","ru":"Градостроительство","category":"business","example":"","level":"Основной"},
+{"az":"Tikinti","ru":"Строительство","category":"estate","example":"","level":"Основной"},
+{"az":"Tikmək","ru":"Строить","category":"estate","example":"","level":"Основной"},
+{"az":"Tikintinin tamamlanması","ru":"Завершение строительства","category":"estate","example":"","level":"Основной"},
+{"az":"Tikinti şirkəti","ru":"Строительная компания","category":"estate","example":"","level":"Основной"},
+{"az":"Zavod","ru":"Завод","category":"estate","example":"","level":"Основной"},
+{"az":"Layihələndirmə","ru":"Проектирование","category":"estate","example":"","level":"Основной"},
+{"az":"Memar","ru":"Архитектор","category":"estate","example":"","level":"Основной"},
+{"az":"Dizayner","ru":"Дизайнер","category":"estate","example":"","level":"Основной"},
+{"az":"İnşaatçı","ru":"Строитель","category":"estate","example":"","level":"Основной"},
+{"az":"Material","ru":"Материал","category":"estate","example":"","level":"Основной"},
+{"az":"Keyfiyyətli material","ru":"Качественный материал","category":"estate","example":"","level":"Основной"},
+{"az":"Texnologiya","ru":"Технология","category":"estate","example":"","level":"Основной"},
+{"az":"Müasir texnologiyalar","ru":"Современные технологии","category":"estate","example":"","level":"Основной"},
+{"az":"Bina","ru":"Здание","category":"estate","example":"","level":"Основной"},
+{"az":"Körpü","ru":"Мост","category":"estate","example":"","level":"Основной"},
+{"az":"Yol","ru":"Дорога","category":"estate","example":"","level":"Основной"},
+{"az":"İşıqlandırma","ru":"Освещение","category":"estate","example":"","level":"Основной"},
+{"az":"Landşaft dizaynı","ru":"Ландшафтный дизайн","category":"estate","example":"","level":"Основной"},
+{"az":"Yaşıllıq","ru":"Озеленение","category":"estate","example":"","level":"Основной"},
+{"az":"İstilik","ru":"Отопление","category":"estate","example":"","level":"Основной"},
+{"az":"Soyutma","ru":"Охлаждение, кондиционирование","category":"estate","example":"","level":"Основной"},
+{"az":"Ventilyasiya","ru":"Вентиляция","category":"estate","example":"","level":"Основной"},
+{"az":"Su təchizatı","ru":"Водоснабжение","category":"estate","example":"","level":"Основной"},
+{"az":"Kanalizasiya","ru":"Канализация","category":"estate","example":"","level":"Основной"},
+{"az":"Elektrik təchizatı","ru":"Электроснабжение","category":"estate","example":"","level":"Основной"},
+{"az":"Qaz təchizatı","ru":"Газоснабжение","category":"estate","example":"","level":"Основной"},
+{"az":"Təmir","ru":"Ремонт","category":"estate","example":"","level":"Основной"},
+{"az":"Bərpa","ru":"Реставрация, восстановление","category":"estate","example":"","level":"Основной"},
+{"az":"Sökülmə","ru":"Снос","category":"estate","example":"","level":"Основной"},
+{"az":"Yenidənqurma","ru":"Перестройка, реконструкция","category":"estate","example":"","level":"Основной"},
+{"az":"Xəritə","ru":"Карта","category":"estate","example":"","level":"Основной"},
+{"az":"Чертyoj","ru":"Чертеж","category":"estate","example":"","level":"Основной"},
+{"az":"Ölçü","ru":"Размер, измерение","category":"estate","example":"","level":"Основной"},
+{"az":"Kvadrat metr (kv.m)","ru":"Квадратный метр (кв.м)","category":"estate","example":"","level":"Основной"},
+{"az":"Hektar","ru":"Гектар","category":"estate","example":"","level":"Основной"},
+{"az":"Çəki","ru":"Вес","category":"estate","example":"","level":"Основной"},
+{"az":"Hündürlük","ru":"Высота","category":"estate","example":"","level":"Основной"},
+{"az":"Dərinlik","ru":"Глубина","category":"estate","example":"","level":"Основной"},
+{"az":"Satış mərkəzi","ru":"Центр продаж","category":"sales","example":"","level":"Основной"},
+{"az":"Məlumat mərkəzi","ru":"Информационный центр","category":"sales","example":"","level":"Основной"},
+{"az":"Şou-rум","ru":"Шоу-рум","category":"sales","example":"","level":"Основной"},
+{"az":"Eksklyuziv","ru":"Эксклюзивный","category":"sales","example":"","level":"Основной"},
+{"az":"Premium","ru":"Премиум","category":"sales","example":"","level":"Основной"},
+{"az":"Lüks","ru":"Люкс","category":"sales","example":"","level":"Основной"},
+{"az":"Məraciət","ru":"Обращение, заявка","category":"sales","example":"","level":"Основной"},
+{"az":"Soruş","ru":"Запрос","category":"sales","example":"","level":"Основной"},
+{"az":"Təklif etmək","ru":"Предлагать","category":"sales","example":"","level":"Основной"},
+{"az":"Göstərmək","ru":"Показывать","category":"sales","example":"","level":"Основной"},
+{"az":"Çatdırmaq","ru":"Доставлять","category":"sales","example":"","level":"Основной"},
+{"az":"Yer","ru":"Место","category":"sales","example":"","level":"Основной"},
+{"az":"Ünvan","ru":"Адрес","category":"sales","example":"","level":"Основной"},
+{"az":"Əlaqə","ru":"Связь, контакт","category":"sales","example":"","level":"Основной"},
+{"az":"Telefon","ru":"Телефон","category":"sales","example":"","level":"Основной"},
+{"az":"E-poçt","ru":"E-mail","category":"sales","example":"","level":"Основной"},
+{"az":"Veb-sayt","ru":"Веб-сайт","category":"sales","example":"","level":"Основной"},
+{"az":"Reklam","ru":"Реклама","category":"sales","example":"","level":"Основной"},
+{"az":"Tədbir","ru":"Мероприятие","category":"sales","example":"","level":"Основной"},
+{"az":"Təqdimat","ru":"Презентация","category":"sales","example":"","level":"Основной"},
+{"az":"Görüş","ru":"Встреча","category":"sales","example":"","level":"Основной"},
+{"az":"Razılaşma","ru":"Согласие, договоренность","category":"sales","example":"","level":"Основной"},
+{"az":"Nümayəndə","ru":"Представитель","category":"sales","example":"","level":"Основной"},
+{"az":"Agent","ru":"Агент","category":"sales","example":"","level":"Основной"},
+{"az":"Məsləhət","ru":"Совет, консультация","category":"sales","example":"","level":"Основной"},
+{"az":"Xidmət","ru":"Услуга","category":"sales","example":"","level":"Основной"},
+{"az":"İcarə xidməti","ru":"Сервис по аренде","category":"sales","example":"","level":"Основной"},
+{"az":"Qeydiyyat","ru":"Регистрация, учет","category":"sales","example":"","level":"Основной"},
+{"az":"Qeydiyyat şöbəsi","ru":"Регистрационное отделение","category":"sales","example":"","level":"Основной"},
+{"az":"Təhlükəsizlik","ru":"Безопасность","category":"sales","example":"","level":"Основной"},
+{"az":"Təhlükəsizlik xidməti","ru":"Служба безопасности","category":"sales","example":"","level":"Основной"},
+{"az":"Konfrans zalı","ru":"Конференц-зал","category":"sales","example":"","level":"Основной"},
+{"az":"Spa","ru":"Спа","category":"sales","example":"","level":"Основной"},
+{"az":"Fitness mərkəzi","ru":"Фитнес-центр","category":"sales","example":"","level":"Основной"},
+{"az":"Səhiyyə mərkəzi","ru":"Медицинский центр","category":"sales","example":"","level":"Основной"},
+{"az":"Dəyərli","ru":"Ценный","category":"sales","example":"","level":"Основной"},
+{"az":"Rahat","ru":"Комфортный, удобный","category":"sales","example":"","level":"Основной"},
+{"az":"Rahatlıq","ru":"Комфорт, удобство","category":"sales","example":"","level":"Основной"},
+{"az":"İncəlik","ru":"Изящество, тонкость","category":"sales","example":"","level":"Основной"},
+{"az":"Zəriflik","ru":"Элегантность, утонченность","category":"sales","example":"","level":"Основной"},
+{"az":"Dəbdəbə","ru":"Роскошь, помпезность","category":"sales","example":"","level":"Основной"},
+{"az":"Keyfiyyət","ru":"Качество","category":"sales","example":"","level":"Основной"},
+{"az":"Zəmanət","ru":"Гарантия","category":"sales","example":"","level":"Основной"},
+{"az":"Təmiz","ru":"Чистый","category":"sales","example":"","level":"Основной"},
+{"az":"Təravətli","ru":"Свежий","category":"sales","example":"","level":"Основной"},
+{"az":"Şərait","ru":"Условия","category":"sales","example":"","level":"Основной"},
+{"az":"Müasir şərait","ru":"Современные условия","category":"sales","example":"","level":"Основной"},
+{"az":"Mükəmməl","ru":"Идеальный, превосходный","category":"sales","example":"","level":"Основной"},
+{"az":"Unikal","ru":"Уникальный","category":"sales","example":"","level":"Основной"},
+{"az":"Möhtəşem","ru":"Великолепный, шикарный","category":"sales","example":"","level":"Основной"},
+{"az":"Gözəl","ru":"Красивый","category":"sales","example":"","level":"Основной"},
+{"az":"Böyük","ru":"Большой","category":"sales","example":"","level":"Основной"},
+{"az":"Kiçik","ru":"Маленький","category":"sales","example":"","level":"Основной"},
+{"az":"Yüksək","ru":"Высокий","category":"sales","example":"","level":"Основной"},
+{"az":"Alçaq","ru":"Низкий","category":"sales","example":"","level":"Основной"},
+{"az":"Geniş","ru":"Широкий, просторный","category":"sales","example":"","level":"Основной"},
+{"az":"Dar","ru":"Узкий","category":"sales","example":"","level":"Основной"},
+{"az":"Sərin","ru":"Прохладный","category":"sales","example":"","level":"Основной"},
+{"az":"İsti","ru":"Теплый, горячий","category":"sales","example":"","level":"Основной"},
+{"az":"Yeni","ru":"Новый","category":"sales","example":"","level":"Основной"},
+{"az":"Köhnə","ru":"Старый","category":"sales","example":"","level":"Основной"},
+{"az":"Parlaq","ru":"Яркий, блестящий","category":"sales","example":"","level":"Основной"},
+{"az":"Tünd","ru":"Темный, насыщенный","category":"sales","example":"","level":"Основной"},
+{"az":"Açıq","ru":"Светлый, открытый","category":"sales","example":"","level":"Основной"},
+{"az":"Almaq","ru":"Покупать, брать","category":"sales","example":"","level":"Основной"},
+{"az":"Satmaq","ru":"Продавать","category":"sales","example":"","level":"Основной"},
+{"az":"Görmək","ru":"Видеть","category":"sales","example":"","level":"Основной"},
+{"az":"Baxmaq","ru":"Смотреть, рассматривать","category":"sales","example":"","level":"Основной"},
+{"az":"Seçmək","ru":"Выбирать","category":"sales","example":"","level":"Основной"},
+{"az":"İstəmək","ru":"Хотеть","category":"sales","example":"","level":"Основной"},
+{"az":"Xahiş etmək","ru":"Просить","category":"sales","example":"","level":"Основной"},
+{"az":"Soruşmaq","ru":"Спрашивать","category":"sales","example":"","level":"Основной"},
+{"az":"Demək","ru":"Говорить","category":"sales","example":"","level":"Основной"},
+{"az":"Danışmaq","ru":"Разговаривать","category":"sales","example":"","level":"Основной"},
+{"az":"Razılaşmaq","ru":"Договариваться, соглашаться","category":"sales","example":"","level":"Основной"},
+{"az":"İmzalamaq","ru":"Подписывать","category":"sales","example":"","level":"Основной"},
+{"az":"Ödəmək","ru":"Платить","category":"sales","example":"","level":"Основной"},
+{"az":"Gəlmək","ru":"Приходить","category":"sales","example":"","level":"Основной"},
+{"az":"Getmək","ru":"Уходить","category":"sales","example":"","level":"Основной"},
+{"az":"Götürmək","ru":"Брать, забирать","category":"sales","example":"","level":"Основной"},
+{"az":"Qoymaq","ru":"Класть, ставить","category":"sales","example":"","level":"Основной"},
+{"az":"Qərar vermək","ru":"Принимать решение","category":"sales","example":"","level":"Основной"},
+{"az":"Gözləmək","ru":"Ждать","category":"sales","example":"","level":"Основной"},
+{"az":"Başa düşmək","ru":"Понимать","category":"sales","example":"","level":"Основной"},
+{"az":"Təsvir etmək","ru":"Описывать","category":"sales","example":"","level":"Основной"},
+{"az":"Müqayisə etmək","ru":"Сравнивать","category":"sales","example":"","level":"Основной"},
+{"az":"Hesablamaq","ru":"Считать, вычислять","category":"sales","example":"","level":"Основной"},
+{"az":"Planlaşdırmaq","ru":"Планировать","category":"sales","example":"","level":"Основной"},
+{"az":"Təmsil etmək","ru":"Представлять (кого-то)","category":"sales","example":"","level":"Основной"},
+{"az":"Qeyd etmək","ru":"Отмечать, записывать","category":"sales","example":"","level":"Основной"},
+{"az":"Təşkil etmək","ru":"Организовывать","category":"sales","example":"","level":"Основной"},
+{"az":"Zəng etmək","ru":"Звонить","category":"sales","example":"","level":"Основной"},
+{"az":"Cavab vermək","ru":"Отвечать","category":"sales","example":"","level":"Основной"},
+{"az":"Təklif göndərmək","ru":"Отправлять предложение","category":"sales","example":"","level":"Основной"},
+{"az":"Çirkin","ru":"Некрасивый","category":"business","example":"","level":"Основной"},
+{"az":"Müasir","ru":"Современный","category":"business","example":"","level":"Основной"},
+{"az":"Qədim","ru":"Древний","category":"business","example":"","level":"Основной"},
+{"az":"Narahat","ru":"Неудобный, беспокойный","category":"business","example":"","level":"Основной"},
+{"az":"Gəlirsiz","ru":"Невыгодный, бесприбыльный","category":"business","example":"","level":"Основной"},
+{"az":"Sürətli","ru":"Быстрый","category":"business","example":"","level":"Основной"},
+{"az":"Yavaş","ru":"Медленный","category":"business","example":"","level":"Основной"},
+{"az":"Asan","ru":"Легкий","category":"business","example":"","level":"Основной"},
+{"az":"Çətin","ru":"Трудный","category":"business","example":"","level":"Основной"},
+{"az":"Ucuz","ru":"Дешевый","category":"business","example":"","level":"Основной"},
+{"az":"Bahalı","ru":"Дорогой","category":"business","example":"","level":"Основной"},
+{"az":"Aşağı","ru":"Низкий","category":"business","example":"","level":"Основной"},
+{"az":"Xoş","ru":"Приятный","category":"business","example":"","level":"Основной"},
+{"az":"Xoşagəlməz","ru":"Неприятный","category":"business","example":"","level":"Основной"},
+{"az":"Çirkli","ru":"Грязный","category":"business","example":"","level":"Основной"},
+{"az":"İşıqlı","ru":"Светлый","category":"business","example":"","level":"Основной"},
+{"az":"Qaranlıq","ru":"Темный","category":"business","example":"","level":"Основной"},
+{"az":"Soyuq","ru":"Холодный","category":"business","example":"","level":"Основной"},
+{"az":"Nəfis","ru":"Изысканный","category":"business","example":"","level":"Основной"},
+{"az":"Adi","ru":"Обычный","category":"business","example":"","level":"Основной"},
+{"az":"Əsas","ru":"Основной","category":"business","example":"","level":"Основной"},
+{"az":"Əlavə","ru":"Дополнительный","category":"business","example":"","level":"Основной"},
+{"az":"Tam","ru":"Полный, целый","category":"business","example":"","level":"Основной"},
+{"az":"Boş","ru":"Пустой","category":"business","example":"","level":"Основной"},
+{"az":"Dolu","ru":"Полный","category":"business","example":"","level":"Основной"},
+{"az":"Həmişə","ru":"Всегда","category":"business","example":"","level":"Основной"},
+{"az":"Heç vaxt","ru":"Никогда","category":"business","example":"","level":"Основной"},
+{"az":"Tez-tez","ru":"Часто","category":"business","example":"","level":"Основной"},
+{"az":"Nadirə","ru":"Редко","category":"business","example":"","level":"Основной"},
+{"az":"Burada","ru":"Здесь","category":"business","example":"","level":"Основной"},
+{"az":"Orada","ru":"Там","category":"business","example":"","level":"Основной"},
+{"az":"Hər yerdə","ru":"Везде","category":"business","example":"","level":"Основной"},
+{"az":"Heç yerdə","ru":"Нигде","category":"business","example":"","level":"Основной"},
+{"az":"İndi","ru":"Сейчас","category":"business","example":"","level":"Основной"},
+{"az":"Sonra","ru":"Потом","category":"business","example":"","level":"Основной"},
+{"az":"Dünən","ru":"Вчера","category":"business","example":"","level":"Основной"},
+{"az":"Sabah","ru":"Завтра","category":"business","example":"","level":"Основной"},
+{"az":"Tez","ru":"Быстро, скоро","category":"business","example":"","level":"Основной"},
+{"az":"Gec","ru":"Поздно","category":"business","example":"","level":"Основной"},
+{"az":"Yaxşı","ru":"Хорошо","category":"business","example":"","level":"Основной"},
+{"az":"Pis","ru":"Плохо","category":"business","example":"","level":"Основной"},
+{"az":"Çox","ru":"Очень, много","category":"business","example":"","level":"Основной"},
+{"az":"Az","ru":"Мало","category":"business","example":"","level":"Основной"},
+{"az":"Biraz","ru":"Немного","category":"business","example":"","level":"Основной"},
+{"az":"Kifayət qədər","ru":"Достаточно","category":"business","example":"","level":"Основной"}
+// Конец массива
+           ];
+
+           function mergeWordsByAz(a, b) {
+               const seen = new Set();
+               const result = [];
+               [...a, ...b].forEach(item => {
+                   if (!seen.has(item.az)) {
+                       seen.add(item.az);
+                       result.push(item);
+                   }
+               });
+               return result;
+           }
+
+           let wordsDB = mergeWordsByAz(baseWordsDB, importedWordsDB);
             // База данных тестовых вопросов с проверенными переводами
             const quizDB = [
                 {
@@ -748,6 +1061,12 @@
             let currentQuizIndex = 0;
             let correctAnswers = 0;
             let totalAnswers = 0;
+            let generatedQuiz = [];
+            let shuffledLearnWords = [];
+            let quizChunkSize = 25;
+            let quizPoolShuffled = [];
+            let currentRoundIndex = 0;
+            let totalRounds = 1;
             
             // Элементы интерфейса
             const authButtons = document.getElementById('authButtons');
@@ -820,15 +1139,19 @@
                 usernameDisplay.textContent = currentUser.username;
                 
                 // Обновляем статистику
-                document.querySelector('.stat-value:nth-child(1)').textContent = currentUser.learnedWords;
-                document.querySelector('.stat-value:nth-child(2)').textContent = currentUser.correctAnswers + '%';
-                document.querySelector('.stat-value:nth-child(3)').textContent = currentUser.streak;
+                const overallStats = document.querySelectorAll('.stats .stat-value');
+                if (overallStats && overallStats.length >= 3) {
+                    overallStats[0].textContent = currentUser.learnedWords;
+                    overallStats[1].textContent = currentUser.correctAnswers + '%';
+                    overallStats[2].textContent = currentUser.streak;
+                }
             }
             
             // Режимы работы приложения
             const modeButtons = document.querySelectorAll('.mode-btn');
             const learnMode = document.querySelector('.learn-mode');
             const quizMode = document.querySelector('.quiz-container');
+            const phrasesMode = document.querySelector('.phrases-container');
             
             modeButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -842,16 +1165,19 @@
                         learnMode.style.display = 'block';
                         quizMode.style.display = 'none';
                         statsContainer.style.display = 'none';
+                        phrasesMode.style.display = 'none';
                     } else if (mode === 'quiz') {
                         learnMode.style.display = 'none';
                         quizMode.style.display = 'block';
                         statsContainer.style.display = 'none';
+                        phrasesMode.style.display = 'none';
                         startNewQuiz();
                     } else if (mode === 'phrases') {
                         learnMode.style.display = 'none';
                         quizMode.style.display = 'none';
                         statsContainer.style.display = 'none';
-                        alert('Режим изучения фраз и диалогов скоро будет добавлен!');
+                        phrasesMode.style.display = 'block';
+                        startPhrases();
                     }
                 });
             });
@@ -866,6 +1192,8 @@
                     
                     currentCategory = this.getAttribute('data-category');
                     currentWordIndex = 0;
+                    reshuffleLearnWords();
+                    if (currentMode === 'quiz') startNewQuiz();
                     showCurrentWord();
                 });
             });
@@ -882,6 +1210,7 @@
                 wordRu.style.display = 'block';
                 example.style.display = 'block';
                 wordInfo.style.display = 'block';
+                recordLearnShown();
             });
             
             nextWordBtn.addEventListener('click', function() {
@@ -889,24 +1218,32 @@
                 example.style.display = 'none';
                 wordInfo.style.display = 'none';
                 
-                currentWordIndex = (currentWordIndex + 1) % getFilteredWords().length;
+                const words = shuffledLearnWords && shuffledLearnWords.length ? shuffledLearnWords : getFilteredWords();
+                currentWordIndex = (currentWordIndex + 1) % words.length;
                 showCurrentWord();
             });
             
             function getFilteredWords() {
-                if (currentCategory === 'all') {
-                    return wordsDB;
-                }
-                return wordsDB.filter(word => word.category === currentCategory);
+                const pool = currentCategory === 'all' ? wordsDB : wordsDB.filter(word => word.category === currentCategory);
+                return pool;
             }
             
             function showCurrentWord() {
-                const words = getFilteredWords();
+                const words = shuffledLearnWords && shuffledLearnWords.length ? shuffledLearnWords : getFilteredWords();
+                if (!words || !words.length) {
+                    wordAz.textContent = 'Слова не найдены';
+                    wordRu.textContent = '';
+                    example.textContent = '';
+                    wordInfo.textContent = '';
+                    progress.textContent = '0 слов';
+                    return;
+                }
+                if (currentWordIndex >= words.length) currentWordIndex = 0;
                 const word = words[currentWordIndex];
                 
-                wordAz.textContent = word.az;
-                wordRu.textContent = word.ru;
-                example.textContent = `Пример: ${word.example}`;
+                wordAz.textContent = word.az || '—';
+                wordRu.textContent = word.ru || '';
+                example.textContent = word.example ? `Пример: ${word.example}` : '';
                 wordInfo.textContent = `Категория: ${getCategoryName(word.category)} | Уровень: ${word.level}`;
                 
                 progress.textContent = `Слово ${currentWordIndex + 1} из ${words.length} ${currentCategory !== 'all' ? `в категории "${getCategoryName(word.category)}"` : ''}`;
@@ -927,86 +1264,277 @@
             const nextQuestionBtn = document.getElementById('next-question');
             const questionElement = document.querySelector('.question');
             const quizProgress = document.querySelector('.quiz-container .progress');
+            const roundBadgeEl = document.createElement('div');
+            roundBadgeEl.style.textAlign = 'center';
+            roundBadgeEl.style.marginBottom = '10px';
+            roundBadgeEl.style.color = '#4a6491';
+            roundBadgeEl.style.fontWeight = '600';
+            document.querySelector('.quiz-container').insertBefore(roundBadgeEl, document.querySelector('.quiz-container').firstChild);
             
             function startNewQuiz() {
+                const rawPool = getFilteredWords();
+                if (!rawPool.length) { return; }
+                const pool = dedupeByAz(rawPool);
+                // сформировать общий перемешанный пул для кругов
+                quizPoolShuffled = shuffleArray(pool.slice());
+                totalRounds = Math.ceil(quizPoolShuffled.length / quizChunkSize) || 1;
+                currentRoundIndex = 0;
+                buildRound(currentRoundIndex);
+            }
+            function buildRound(roundIdx) {
+                const start = roundIdx * quizChunkSize;
+                const end = Math.min(start + quizChunkSize, quizPoolShuffled.length);
+                const slice = quizPoolShuffled.slice(start, end);
+                generatedQuiz = [];
+                slice.forEach(correctWord => {
+                    const distractPool = quizPoolShuffled.filter(w => w.az !== correctWord.az);
+                    const distractors = shuffleArray(distractPool.slice()).slice(0, 3);
+                    const optionsArr = [correctWord.ru, ...distractors.map(d => d.ru)];
+                    shuffleArray(optionsArr);
+                    const correctIndex = optionsArr.indexOf(correctWord.ru);
+                    generatedQuiz.push({
+                        question: `Выберите правильный перевод для: "${correctWord.az}"`,
+                        options: optionsArr,
+                        correct: correctIndex,
+                        explanation: `${correctWord.az} — ${correctWord.ru}`
+                    });
+                });
                 currentQuizIndex = 0;
                 correctAnswers = 0;
                 totalAnswers = 0;
+                roundBadgeEl.textContent = `Круг ${roundIdx + 1} из ${totalRounds}`;
                 showQuestion();
             }
-            
+            function goToNextRound() {
+                if (currentRoundIndex + 1 < totalRounds) {
+                    currentRoundIndex++;
+                    buildRound(currentRoundIndex);
+                } else {
+                    roundBadgeEl.textContent = `Круги завершены (${totalRounds})`;
+                }
+            }
             function showQuestion() {
-                const question = quizDB[currentQuizIndex];
-                questionElement.textContent = question.question;
-                
+                const q = generatedQuiz[currentQuizIndex];
+                if (!q) return;
+                questionElement.textContent = q.question;
                 options.forEach((option, index) => {
-                    option.textContent = question.options[index];
+                    option.textContent = q.options[index] || '';
                     option.style.backgroundColor = '#e4e9f2';
                     option.style.pointerEvents = 'auto';
                 });
-                
                 result.style.display = 'none';
-                quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${quizDB.length}`;
-                
-                // Обновляем статистику
-                document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
-                document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
-                document.querySelector('.quiz-container .stat-value:nth-child(3)').textContent = 
-                    totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) + '%' : '0%';
+                quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${generatedQuiz.length}`;
+                const quizStats = document.querySelectorAll('.quiz-container .stat-value');
+                if (quizStats && quizStats.length >= 3) {
+                    quizStats[0].textContent = correctAnswers;
+                    quizStats[1].textContent = totalAnswers - correctAnswers;
+                    quizStats[2].textContent = totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) + '%' : '0%';
+                }
             }
-            
             options.forEach(option => {
                 option.addEventListener('click', function() {
-                    const question = quizDB[currentQuizIndex];
+                    const q = generatedQuiz[currentQuizIndex];
                     const selectedIndex = Array.from(options).indexOf(this);
-                    
-                    // Проверяем, правильный ли ответ
-                    if (selectedIndex === question.correct) {
+                    if (selectedIndex === q.correct) {
                         this.style.backgroundColor = '#4cd964';
-                        result.textContent = `Правильно! 🎉 ${question.explanation}`;
+                        result.textContent = `Правильно! 🎉 ${q.explanation}`;
                         result.className = 'result correct';
                         correctAnswers++;
+                        recordQuizAnswer(true);
                     } else {
                         this.style.backgroundColor = '#ff3b30';
-                        result.textContent = `Неправильно. ${question.explanation}`;
+                        result.textContent = `Неправильно. ${q.explanation}`;
                         result.className = 'result incorrect';
-                        
-                        // Подсвечиваем правильный ответ
-                        options[question.correct].style.backgroundColor = '#4cd964';
+                        options[q.correct].style.backgroundColor = '#4cd964';
+                        recordQuizAnswer(false);
                     }
-                    
                     totalAnswers++;
                     result.style.display = 'block';
-                    
-                    // Обновляем статистику
-                    document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
-                    document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
-                    document.querySelector('.quiz-container .stat-value:nth-child(3)').textContent = 
-                        Math.round((correctAnswers / totalAnswers) * 100) + '%';
-                    
-                    // Блокируем все варианты после ответа
-                    options.forEach(opt => {
-                        opt.style.pointerEvents = 'none';
-                    });
+                    const quizStats = document.querySelectorAll('.quiz-container .stat-value');
+                    if (quizStats && quizStats.length >= 3) {
+                        quizStats[0].textContent = correctAnswers;
+                        quizStats[1].textContent = totalAnswers - correctAnswers;
+                        quizStats[2].textContent = Math.round((correctAnswers / totalAnswers) * 100) + '%';
+                    }
+                    options.forEach(opt => { opt.style.pointerEvents = 'none'; });
                 });
             });
-            
             nextQuestionBtn.addEventListener('click', function() {
-                // Сбрасываем состояние вариантов ответа
                 options.forEach(opt => {
                     opt.style.backgroundColor = '#e4e9f2';
                     opt.style.pointerEvents = 'auto';
                 });
-                
                 result.style.display = 'none';
-                
-                // Переходим к следующему вопросу
-                currentQuizIndex = (currentQuizIndex + 1) % quizDB.length;
-                showQuestion();
+                if (currentQuizIndex + 1 < generatedQuiz.length) {
+                    currentQuizIndex++;
+                    showQuestion();
+                } else {
+                    goToNextRound();
+                }
             });
-            
+
             // Показываем первое слово при загрузке
+            reshuffleLearnWords();
             showCurrentWord();
+
+            // Догружаем полный словарь и фразы (no-store + внешние фолбэки)
+            (function loadFullData(){
+                const ts = Date.now();
+                const fetchNoStore = (url)=>fetch(url,{cache:'no-store',headers:{'Cache-Control':'no-store'}});
+                fetchNoStore(`/words_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+                    try{ const arr = JSON.parse(txt); if (Array.isArray(arr) && arr.length){ wordsDB = mergeWordsByAz(wordsDB, arr); showCurrentWord(); }}catch(e){}
+                }).catch(()=>{
+                    return fetchNoStore('https://0x0.st/KiIL.json').then(r=>r.ok?r.text():Promise.reject()).then(txt=>{ try{ const arr = JSON.parse(txt); if(Array.isArray(arr)&&arr.length){ wordsDB = mergeWordsByAz(wordsDB, arr); showCurrentWord(); }}catch(e){} }).catch(()=>{});
+                });
+                fetchNoStore(`/phrases_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+                    try{ const arr = JSON.parse(txt); if (Array.isArray(arr) && arr.length){
+                        phrasesDB.length = 0; Array.prototype.push.apply(phrasesDB, arr);
+                        if (currentMode === 'phrases') startPhrases();
+                    }}catch(e){}
+                }).catch(()=>{
+                    return fetchNoStore('https://0x0.st/KiI9.json').then(r=>r.ok?r.text():Promise.reject()).then(txt=>{ try{ const arr = JSON.parse(txt); if(Array.isArray(arr)&&arr.length){ phrasesDB.length=0; Array.prototype.push.apply(phrasesDB, arr); if (currentMode==='phrases') startPhrases(); }}catch(e){} }).catch(()=>{});
+                });
+            })();
+
+            // Данные фраз (вставка из разобранного файла)
+            const phrasesDB = [
+  {"az":"Salam, sizi eşitmək çox şadam. [İsim] dən əlaqə.","ru":"Здравствуйте, очень рад вас слышать. Связь от [Имя].","section":"Установление контакта и первый диалог"},
+  {"az":"Sea Breeze-in informasiya mərkəzində sizinlə görüşək.","ru":"Давайте познакомимся в информационном центре Sea Breeze.","section":"Установление контакта и первый диалог"},
+  {"az":"Xoş gəlmisiniz! Bizə maraq göstərdiyiniz üçün təşəkkürlər.","ru":"Добро пожаловать! Спасибо, что проявили интерес к нам.","section":"Установление контакта и первый диалог"},
+  {"az":"Sizin üçün nə edə bilərəm?","ru":"Что я могу для вас сделать?","section":"Установление контакта и первый диалог"},
+  {"az":"Sizə necə müraciət etməliyəm?","ru":"Как мне к вам обращаться?","section":"Установление контакта и первый диалог"},
+  {"az":"Sizi hansı layihə daha çox maraqlandırır?","ru":"Какой проект вас интересует больше всего?","section":"Установление контакта и первый диалог"},
+  {"az":"Sea Breeze haqqında hardan eşitmisiniz?","ru":"Где вы слышали о Sea Breeze?","section":"Установление контакта и первый диалог"},
+  {"az":"Bizim veb-saytımızda hansı obyektlərə baxmısınız?","ru":"На какие объекты вы смотрели на нашем сайте?","section":"Установление контакта и первый диалог"},
+  {"az":"Siz özünüz üçün və ya investisiya üçün baxırsınız?","ru":"Вы смотрите для себя или для инвестиций?","section":"Установление контакта и первый диалог"},
+  {"az":"Bakıda daşınmaz əmlakınız var?","ru":"У вас есть недвижимость в Баку?","section":"Установление контакта и первый диалог"},
+  {"az":"Özünüz üçün ideal mənzili necə təsəvvür edirsiniz?","ru":"Как вы представляете себе идеальную квартиру?","section":"Установление контакта и первый диалог"},
+  {"az":"Deyin görüm, sizə görə mənzilin ən əhəmiyyətli üstünlüyü nə olmalıdır?","ru":"Скажите, по вашему мнению, какое самое важное преимущество должно быть у квартиры?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Almaq istədiyiniz obyektə nə qədər investisiya etməyi düşünürsünüz?","ru":"Сколько вы考虑 инвестировать в объект, который хотите купить?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Sizcə, bu layihənin gələcək dəyər artımını nə təsirləndirir?","ru":"Как вы думаете, что повлияет на будущий рост стоимости этого проекта?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Əvvəllər daşınmaz əmlak alım-satımı ilə məşğul olmusunuz?","ru":"Вы раньше занимались куплей-продажей недвижимости?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Sizcə, dənizə yaxınlıq yaşayış keyfiyyətini nə dərəcədə artırır?","ru":"Насколько, по вашему мнению, близость к морю повышает качество жизни?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Dəniz mənzərəsi sizin üçün nə qədər vacibdir?","ru":"Насколько важен для вас вид на море?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Açıq və ya qapalı hovuz üstünlüyünüz varmı?","ru":"Вы предпочитаете открытый или закрытый бассейн?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Yaşayış kompleksində sosial obyektlər (restoran, spa, fitness) sizin üçün əhəmiyyətlidirmi?","ru":"Важны ли для вас социальные объекты в жилом комплексе (ресторан, спа, фитнес)?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Maşın üçün parkinq yeri sizin üçün prioritetdirmi?","ru":"Является ли парковочное место для автомобиля для вас приоритетом?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Uşaqlarınız üçün oyun meydançalarının olması sizi maraqlandırırmı?","ru":"Вас интересует наличие детских площадок для ваших детей?","section":"Выявление и углубление потребностей (Глубокие вопросы)"},
+  {"az":"Alış üçün təxmini tarix nəzərdə tutursunuz?","ru":"Какую примерную дату покупки вы рассматриваете?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"İlkin ödəniş üçün nə qədər bir məbləğ ayıra bilərsiniz?","ru":"Какую сумму вы можете выделить для первоначального взноса?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Kredit və ya nağd ödəniş üstünlüyünüz varmı?","ru":"Вы предпочитаете кредит или наличный расчет?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Sizcə, indi almaq üçün ən yaxşı vaxtdırmı?","ru":"Как вы думаете, сейчас лучшее время для покупки?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Bu layihənin investisiya potensialını necə qiymətləndirirsiniz?","ru":"Как вы оцениваете инвестиционный потенциал этого проекта?","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Bahadır\" (Это дорого): \"Başa düşürəm, lakin nəzərə alın ki, bu qiymətə yüksək keyfiyyətli materiallar, premium infrastruktur və eksklyuziv dəniz mənzərəsi daxildir. Bu, uzunmüddətli investisiyadır.\"","ru":"Понимаю, но учтите, что в эту цену входят высококачественные материалы, премиальная инфраструктура и эксклюзивный вид на море. Это долгосрочная инвестиция.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Düşünüm\" (Я подумаю): \"Əlbəttə, razıyam. Təklif etmək istərdim ki, ofisimizdə master-planı görəsəniz, daha aydın fikir formalaşa bilər. Bu, yalnız 20 dəqiqənizi alar.\"","ru":"Конечно, я согласен. Хочу предложить вам посмотреть мастер-план в нашем офисе. Это прояснит картину. Это займет всего 20 минут.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Digər layihələrlə müqayisə edim\" (Я сравню с другими проектами): \"Əla fikirdir. Mən də sizə digər layihələrdə olmayan, ancaq Sea Breeze-də mövcud olan üstünlükləri göstərim ki, daha dəqiq müqayisə edə biləsiniz.\"","ru":"Отличная идея. Я также покажу вам преимущества, которых нет в других проектах, но есть в Sea Breeze, чтобы вы могли сравнить более точно.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"İndi vaxtım yoxdur\" (Сейчас у меня нет времени): \"Tamamilə başa düşürəm. Sizin üçün ən əlverişli vaxtı təklif etsəniz, mən həmin vaxtı sizin üçün rezerv edəcəm.\"","ru":"Полностью понимаю. Если вы предложите самое удобное для вас время, я зарезервирую его для вас.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"\"Bazar vəziyyəti qeyri-müəyyəndir\" (Ситуация на рынке неопределенная): \"Həqiqətən də, bazar dalğalanır. Ancaq məhz belə dövrlərdə ən sərfəli şərtlər əldə etmək olar. Erkən investisiya həmişə daha çox qazanc gətirir.\"","ru":"Действительно, рынок колеблется. Но именно в такие периоды можно получить самые выгодные условия. Ранние инвестиции всегда приносят больше дохода.","section":"Квалификация клиента и работа с возражениями"},
+  {"az":"Sea Breeze təkcə yaşayış yeri deyil, tamamlanmış bir həyat tərzidir.","ru":"Sea Breeze – это не просто место для жизни, это полностью готовый образ жизни.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Marina Village Bakının mərkəzində yerləşən lüks və rahatlıq vahididir.","ru":"Marina Village – это оазис роскоши и комфорта в центре Баку.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Layihəmiz \"şəhər içində şəhər\" konsepsiyası üzərində qurulub.","ru":"Наш проект построен по концепции \"город в городе\".","section":"Презентация объекта и его преимуществ"},
+  {"az":"Burada hər bir detal, sizin rahatlığınız və əmin-amanlığınız üçün düşünülüb.","ru":"Здесь каждая деталь продумана для вашего комфорта и безопасности.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Dənizə yaxınlıq təbii gözəlliyi və rahatlığı bir arada gətirir.","ru":"Близость к морю сочетает в себе природную красоту и комфорт.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Bu mənzil təkcə sizin üçün deyil, gələcək nəsliniz üçün də dəyərli bir investisiyadır.","ru":"Эта квартира является ценной инвестицией не только для вас, но и для вашего будущего поколения.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Erkən rezervasiya ilə ən sərfəli qiymət və yaxşı mərtəbə seçimi imkanı əldə edirsiniz.","ru":"Благодаря раннему бронированию вы получаете самую выгодную цену и возможность выбора хорошего этажа.","section":"Презентация объекта и его преимуществ"},
+  {"az":"İllik 4-5% icarə gəliri və 15% dəyər artımı ilə bu investisiya özünü tez amortizasiya edəcək.","ru":"С годовой арендной доходностью 4-5% и ростом стоимости на 15% эти инвестиции быстро окупятся.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Dünyanın ən məşhur restoranları və dəb butikları ilə üzbəüz yaşayacaqsınız.","ru":"Вы будете жить лицом к лицу с самыми известными ресторанами и модными бутиками мира.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Sahil xəttində və şəhər mərkəzində olmaq kimi nadir fürsət təklif edirik.","ru":"Мы предлагаем редкую возможность находиться на береговой линии и в центре города.","section":"Презентация объекта и его преимуществ"},
+  {"az":"Sizə layihənin master-planını və interyer dizayn nümunələrini şəxsî ofisimizdə göstərməyi təklif edirəm.","ru":"Предлагаю показать вам мастер-план проекта и образцы дизайна интерьера в нашем личном офисе.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Gəlin, ofisimizdə görüşək və sizin üçün dəqiq bir finansal hesablama hazırlayaq.","ru":"Давайте встретимся в нашем офисе и подготовим для вас точный финансовый расчет.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Şəxsən gəldikdə, mənzərəni və mühiti hiss edə biləcəksiniz. Bu, telefon danışığından daha effektivdir.","ru":"При личном визите вы сможете прочувствовать вид и атмосферу. Это эффективнее, чем разговор по телефону.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Ofisimizdə sizi içki və sərin su ilə qarşılayacağıq.","ru":"В нашем офисе мы встретим вас напитками и прохладительной водой.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Gəlin, bu fürsəti əldən verməyək.","ru":"Давайте не упустим эту возможность.","section":"Призыв к действию и продажа встречи"},
+  {"az":"Bu həftə sonu sizə vaxt ayıra bilərsinizmi?","ru":"Можете ли вы выделить время на этих выходных?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Sizin üçün ən əlverişli vaxt nə vaxtdır? Səhər, günorta və ya axşam?","ru":"Какое время для вас наиболее удобно? Утро, день или вечер?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Cümə günü, saat 15:00 sizə uyğundurmu?","ru":"Подходит ли вам пятница в 15:00?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Ofisimizə gəlmək sizin üçün rahatdırmı? Yoxsa, sizə biz gələk?","ru":"Вам удобно приехать в наш офис? Или нам приехать к вам?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Görüşü təsdiq etmək üçün ünvana SMS göndərim?","ru":"Отправить SMS с адресом для подтверждения встречи?","section":"Призыв к действию и продажа встречи"},
+  {"az":"Görünür, bu mənzil sizin bütün istəklərinizə cavab verir.","ru":"Похоже, эта квартира отвечает всем вашим пожеланиям.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sizcə, bu fürsəti əldən verməyək?","ru":"Как вы думаете, давайте не упустим эту возможность?","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sifarişi rəsmiləşdirmək üçün lazım olan sənədləri hazırlayım?","ru":"Подготовить необходимые документы для оформления заказа?","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"İlkin ödənişi etmək üçün ən rahat üsul hansıdır?","ru":"Какой способ внесения первоначального взноса для вас наиболее удобен?","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Təbrik edirəm! Düzgün qərar qəbul etdiniz.","ru":"Поздравляю! Вы приняли правильное решение.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sizə mənzilin təmirinə kömək etmək üçün etibarlı bir şirkət təqdim edə bilərəm.","ru":"Могу порекомендовать надежную компанию для помощи в ремонте квартиры.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"İcarəyə vermək istəsəniz, bizim icarə idarəetmə xidmətimiz var.","ru":"Если захотите сдать в аренду, у нас есть услуга управления арендой.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Hər hansı bir sualınız olsa, çəkinmədən mənimlə əlaqə saxlayın.","ru":"Если у вас возникнут какие-либо вопросы, не стесняйтесь связываться со мной.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Mənzilin təhvil verilmə mərhələsində sizə müşayiət edəcəyəm.","ru":"Я буду сопровождать вас на этапе сдачи квартиры.","section":"Закрытие сделки и постпродажное обслуживание"},
+  {"az":"Sizi investisiya gəlirlərimiz haqqında məlumatlandıracağam.","ru":"Я буду информировать вас о наших инвестиционных доходах.","section":"Закрытие сделки и постпродажное обслуживание"}
+            ];
+            let currentPhraseIndex = 0;
+            const phraseAz = document.querySelector('.phrase-az');
+            const phraseRu = document.querySelector('.phrase-ru');
+            const phraseSection = document.querySelector('.phrase-section');
+            const phraseProgress = document.querySelector('.phrase-progress');
+            const showPhraseBtn = document.getElementById('show-phrase-translation');
+            const nextPhraseBtn = document.getElementById('next-phrase');
+            
+            function startPhrases() {
+                currentPhraseIndex = 0;
+                showCurrentPhrase();
+            }
+            function showCurrentPhrase() {
+                if (!phrasesDB.length) {
+                    phraseAz.textContent = 'Фразы не найдены';
+                    return;
+                }
+                const p = phrasesDB[currentPhraseIndex];
+                phraseAz.textContent = p.az;
+                phraseRu.textContent = p.ru;
+                phraseSection.textContent = p.section;
+                phraseRu.style.display = 'none';
+                phraseSection.style.display = 'none';
+                phraseProgress.textContent = `Фраза ${currentPhraseIndex + 1} из ${phrasesDB.length}`;
+            }
+            showPhraseBtn && showPhraseBtn.addEventListener('click', function() {
+                phraseRu.style.display = 'block';
+                phraseSection.style.display = 'block';
+                saveUserProgress('phrases_revealed', 1);
+            });
+            nextPhraseBtn && nextPhraseBtn.addEventListener('click', function() {
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrasesDB.length;
+                showCurrentPhrase();
+            });
+
+            // Простая статистика per-user в localStorage
+            function getUserKey(key) {
+                return currentUser ? `az_app_${currentUser.username}_${key}` : null;
+            }
+            function saveUserProgress(key, delta) {
+                const k = getUserKey(key);
+                if (!k) return;
+                const val = parseInt(localStorage.getItem(k) || '0', 10) + (delta||0);
+                localStorage.setItem(k, String(val));
+            }
+            function recordLearnShown() { saveUserProgress('learn_shown', 1); }
+            function recordQuizAnswer(correct) {
+                saveUserProgress('quiz_total', 1);
+                if (correct) saveUserProgress('quiz_correct', 1);
+            }
+
+            function shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+            function dedupeByAz(arr) {
+                const seen = new Set();
+                const out = [];
+                for (const w of arr) {
+                    if (!seen.has(w.az)) { seen.add(w.az); out.push(w); }
+                }
+                return out;
+            }
+            function reshuffleLearnWords() {
+                const pool = getFilteredWords();
+                shuffledLearnWords = shuffleArray(pool.slice());
+                currentWordIndex = 0;
+            }
+            function getLearnWordAt(idx) {
+                const pool = shuffledLearnWords && shuffledLearnWords.length ? shuffledLearnWords : getFilteredWords();
+                return pool[idx % pool.length];
+            }
         });
     </script>
 </body>
