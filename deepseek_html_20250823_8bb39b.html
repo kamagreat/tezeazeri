@@ -1061,6 +1061,8 @@
             let currentQuizIndex = 0;
             let correctAnswers = 0;
             let totalAnswers = 0;
+            let generatedQuiz = [];
+            let shuffledLearnWords = [];
             
             // Элементы интерфейса
             const authButtons = document.getElementById('authButtons');
@@ -1186,6 +1188,8 @@
                     
                     currentCategory = this.getAttribute('data-category');
                     currentWordIndex = 0;
+                    reshuffleLearnWords();
+                    if (currentMode === 'quiz') startNewQuiz();
                     showCurrentWord();
                 });
             });
@@ -1210,19 +1214,18 @@
                 example.style.display = 'none';
                 wordInfo.style.display = 'none';
                 
-                currentWordIndex = (currentWordIndex + 1) % getFilteredWords().length;
+                const words = shuffledLearnWords && shuffledLearnWords.length ? shuffledLearnWords : getFilteredWords();
+                currentWordIndex = (currentWordIndex + 1) % words.length;
                 showCurrentWord();
             });
             
             function getFilteredWords() {
-                if (currentCategory === 'all') {
-                    return wordsDB;
-                }
-                return wordsDB.filter(word => word.category === currentCategory);
+                const pool = currentCategory === 'all' ? wordsDB : wordsDB.filter(word => word.category === currentCategory);
+                return pool;
             }
             
             function showCurrentWord() {
-                const words = getFilteredWords();
+                const words = shuffledLearnWords && shuffledLearnWords.length ? shuffledLearnWords : getFilteredWords();
                 if (!words || !words.length) {
                     wordAz.textContent = 'Слова не найдены';
                     wordRu.textContent = '';
@@ -1259,26 +1262,42 @@
             const quizProgress = document.querySelector('.quiz-container .progress');
             
             function startNewQuiz() {
+                const pool = getFilteredWords();
+                if (!pool.length) { return; }
+                const shuffled = shuffleArray(pool.slice());
+                const takeN = Math.min(25, shuffled.length);
+                generatedQuiz = [];
+                for (let i = 0; i < takeN; i++) {
+                    const correctWord = shuffled[i];
+                    // собрать варианты: правильный + 3 отвлекающих из той же категории/пула
+                    const distractPool = pool.filter(w => w.az !== correctWord.az);
+                    const distractors = shuffleArray(distractPool.slice()).slice(0, 3);
+                    const options = [correctWord.ru, ...distractors.map(d => d.ru)];
+                    shuffleArray(options);
+                    const correctIndex = options.indexOf(correctWord.ru);
+                    generatedQuiz.push({
+                        question: `Выберите правильный перевод для: "${correctWord.az}"`,
+                        options,
+                        correct: correctIndex,
+                        explanation: `${correctWord.az} — ${correctWord.ru}`
+                    });
+                }
                 currentQuizIndex = 0;
                 correctAnswers = 0;
                 totalAnswers = 0;
                 showQuestion();
             }
-            
             function showQuestion() {
-                const question = quizDB[currentQuizIndex];
-                questionElement.textContent = question.question;
-                
+                const q = generatedQuiz[currentQuizIndex];
+                if (!q) return;
+                questionElement.textContent = q.question;
                 options.forEach((option, index) => {
-                    option.textContent = question.options[index];
+                    option.textContent = q.options[index] || '';
                     option.style.backgroundColor = '#e4e9f2';
                     option.style.pointerEvents = 'auto';
                 });
-                
                 result.style.display = 'none';
-                quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${quizDB.length}`;
-                
-                // Обновляем статистику
+                quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${generatedQuiz.length}`;
                 const quizStats = document.querySelectorAll('.quiz-container .stat-value');
                 if (quizStats && quizStats.length >= 3) {
                     quizStats[0].textContent = correctAnswers;
@@ -1286,60 +1305,46 @@
                     quizStats[2].textContent = totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) + '%' : '0%';
                 }
             }
-            
             options.forEach(option => {
                 option.addEventListener('click', function() {
-                    const question = quizDB[currentQuizIndex];
+                    const q = generatedQuiz[currentQuizIndex];
                     const selectedIndex = Array.from(options).indexOf(this);
-                    
-                    // Проверяем, правильный ли ответ
-                    if (selectedIndex === question.correct) {
+                    if (selectedIndex === q.correct) {
                         this.style.backgroundColor = '#4cd964';
-                        result.textContent = `Правильно! 🎉 ${question.explanation}`;
+                        result.textContent = `Правильно! 🎉 ${q.explanation}`;
                         result.className = 'result correct';
                         correctAnswers++;
+                        recordQuizAnswer(true);
                     } else {
                         this.style.backgroundColor = '#ff3b30';
-                        result.textContent = `Неправильно. ${question.explanation}`;
+                        result.textContent = `Неправильно. ${q.explanation}`;
                         result.className = 'result incorrect';
-                        
-                        // Подсвечиваем правильный ответ
-                        options[question.correct].style.backgroundColor = '#4cd964';
+                        options[q.correct].style.backgroundColor = '#4cd964';
+                        recordQuizAnswer(false);
                     }
-                    
                     totalAnswers++;
                     result.style.display = 'block';
-                    
-                    // Обновляем статистику
                     const quizStats = document.querySelectorAll('.quiz-container .stat-value');
                     if (quizStats && quizStats.length >= 3) {
                         quizStats[0].textContent = correctAnswers;
                         quizStats[1].textContent = totalAnswers - correctAnswers;
                         quizStats[2].textContent = Math.round((correctAnswers / totalAnswers) * 100) + '%';
                     }
-                    
-                    // Блокируем все варианты после ответа
-                    options.forEach(opt => {
-                        opt.style.pointerEvents = 'none';
-                    });
+                    options.forEach(opt => { opt.style.pointerEvents = 'none'; });
                 });
             });
-            
             nextQuestionBtn.addEventListener('click', function() {
-                // Сбрасываем состояние вариантов ответа
                 options.forEach(opt => {
                     opt.style.backgroundColor = '#e4e9f2';
                     opt.style.pointerEvents = 'auto';
                 });
-                
                 result.style.display = 'none';
-                
-                // Переходим к следующему вопросу
-                currentQuizIndex = (currentQuizIndex + 1) % quizDB.length;
+                currentQuizIndex = (currentQuizIndex + 1) % generatedQuiz.length;
                 showQuestion();
             });
-            
+
             // Показываем первое слово при загрузке
+            reshuffleLearnWords();
             showCurrentWord();
 
             // Догружаем полный словарь и фразы (no-store + внешние фолбэки)
@@ -1474,6 +1479,23 @@
             function recordQuizAnswer(correct) {
                 saveUserProgress('quiz_total', 1);
                 if (correct) saveUserProgress('quiz_correct', 1);
+            }
+
+            function shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+            function reshuffleLearnWords() {
+                const pool = getFilteredWords();
+                shuffledLearnWords = shuffleArray(pool.slice());
+                currentWordIndex = 0;
+            }
+            function getLearnWordAt(idx) {
+                const pool = shuffledLearnWords && shuffledLearnWords.length ? shuffledLearnWords : getFilteredWords();
+                return pool[idx % pool.length];
             }
         });
     </script>
