@@ -1012,7 +1012,7 @@
                return result;
            }
 
-           let wordsDB = JSON.parse([{"az": "Daşınmaz əmlak", "ru": "Недвижимость, недвижимое имущество", "category": "estate", "example": "", "level": "Основной"}, {"az": "Mənzil", "ru": "Квартира", "category": "estate", "example": "", "level": "Основной"}]);
+           let wordsDB = [];
             // База данных тестовых вопросов с проверенными переводами
             const quizDB = [
                 {
@@ -1332,6 +1332,20 @@
             
             // Показываем первое слово при загрузке
             showCurrentWord();
+
+            // Догружаем полный словарь и фразы (без кеша)
+            (function loadFullData(){
+                const ts = Date.now();
+                fetch(`/words_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+                    try{ wordsDB = JSON.parse(txt); showCurrentWord(); }catch(e){}
+                }).catch(()=>{});
+                fetch(`/phrases_all.json?_=${ts}`).then(r=>r.ok?r.text():Promise.reject()).then(txt=>{
+                    try{ const arr = JSON.parse(txt); if (Array.isArray(arr) && arr.length){
+                        phrasesDB.length = 0; Array.prototype.push.apply(phrasesDB, arr);
+                        if (currentMode === 'phrases') startPhrases();
+                    }}catch(e){}
+                }).catch(()=>{});
+            })();
 
             // Данные фраз (вставка из разобранного файла)
             const phrasesDB = [
