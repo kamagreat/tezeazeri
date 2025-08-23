@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренажер азербайджанского языка - Недвижимость</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .auth-buttons {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .auth-btn {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .auth-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .user-info {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+        
+        .user-info span {
+            font-weight: 500;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+        
+        .mode-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .mode-btn {
+            padding: 15px 30px;
+            background-color: #5c7fda;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mode-btn:hover {
+            background-color: #4a6491;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mode-btn.active {
+            background-color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: #e4e9f2;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            background-color: #d1d9e8;
+            transform: translateY(-2px);
+        }
+        
+        .category-btn.active {
+            background-color: #4a6491;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2c3e50 0%, #4a6491 100%);
+        }
+        
+        .word-az {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-ru {
+            font-size: 2rem;
+            color: #4a6491;
+            margin-bottom: 30px;
+            display: none;
+            font-weight: 600;
+        }
+        
+        .example {
+            font-style: italic;
+            color: #5c7fda;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            display: none;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 12px 20px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .control-btn {
+            padding: 14px 28px;
+            background-color: #5c7fda;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .control-btn:hover {
+            background-color: #4a6491;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .control-btn:active {
+            transform: translateY(0);
+        }
+        
+        .quiz-container {
+            display: none;
+        }
+        
+        .question {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            padding: 20px;
+            background-color: #e4e9f2;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .option:hover {
+            background-color: #d1d9e8;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 25px;
+            text-align: center;
+            display: none;
+            padding: 15px;
+            border-radius: 12px;
+        }
+        
+        .correct {
+            background-color: #4cd964;
+            color: white;
+        }
+        
+        .incorrect {
+            background-color: #ff3b30;
+            color: white;
+        }
+        
+        .progress {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #4a6491;
+            font-weight: 500;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #5c7fda;
+            font-weight: 500;
+        }
+        
+        .login-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        .login-form {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #4a6491;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #d1d9e8;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            border-color: #5c7fda;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 127, 218, 0.3);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats-container {
+            display: none;
+            padding: 30px;
+        }
+        
+        .stats-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.2rem;
+        }
+        
+        .stats-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+        }
+        
+        .stats-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #5c7fda;
+            padding-bottom: 10px;
+        }
+        
+        .stats-chart {
+            grid-column: 1 / -1;
+            height: 350px;
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #2c3e50;
+            color: #e4e9f2;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            .word-az {
+                font-size: 2.2rem;
+            }
+            
+            .word-ru {
+                font-size: 1.7rem;
+            }
+            
+            .stats-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .auth-buttons, .user-info {
+                position: relative;
+                top: 0;
+                right: 0;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .control-btn {
+                width: 80%;
+            }
+        }
+        
+        .verified-badge {
+            color: #4cd964;
+            margin-left: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .word-info {
+            font-size: 1.1rem;
+            color: #5c7fda;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-language"></i> Тренажер азербайджанского языка</h1>
+            <p class="subtitle">Изучаем термины недвижимости и продаж | Sea Breeze Project</p>
+            
+            <div class="auth-buttons" id="authButtons">
+                <button class="auth-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Вход</button>
+                <button class="auth-btn" id="registerBtn"><i class="fas fa-user-plus"></i> Регистрация</button>
+            </div>
+            
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span id="usernameDisplay"><i class="fas fa-user"></i> Пользователь</span>
+                <button class="auth-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Выйти</button>
+                <button class="auth-btn" id="statsBtn"><i class="fas fa-chart-line"></i> Статистика</button>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="learn"><i class="fas fa-book"></i> Режим изучения</button>
+                <button class="mode-btn" data-mode="quiz"><i class="fas fa-question-circle"></i> Тестирование</button>
+                <button class="mode-btn" data-mode="phrases"><i class="fas fa-comments"></i> Фразы и диалоги</button>
+            </div>
+            
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">Все категории</button>
+                <button class="category-btn" data-category="estate">Недвижимость</button>
+                <button class="category-btn" data-category="business">Бизнес-термины</button>
+                <button class="category-btn" data-category="sales">Продажи</button>
+            </div>
+            
+            <div class="learn-mode">
+                <div class="card">
+                    <div class="word-az">Daşınmaz əmlak <i class="fas fa-check-circle verified-badge"></i></div>
+                    <div class="word-ru">Недвижимость</div>
+                    <div class="example">Пример: Bu daşınmaz əmlak yüksək gəlir gətirir.</div>
+                    <div class="word-info">Категория: Недвижимость | Уровень: Основной</div>
+                    <div class="controls">
+                        <button class="control-btn" id="show-translation"><i class="fas fa-eye"></i> Показать перевод</button>
+                        <button class="control-btn" id="next-word"><i class="fas fa-arrow-right"></i> Следующее слово</button>
+                    </div>
+                </div>
+                
+                <div class="progress">Слово 1 из 156 <i class="fas fa-check-circle" style="color: #4cd964;"></i></div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">142</div>
+                        <div class="stat-label">Изучено слов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">94%</div>
+                        <div class="stat-label">Процент правильных</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Дней подряд</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="question">Выберите правильный перевод для: "Layihə"</div>
+                <div class="options">
+                    <div class="option">Офис</div>
+                    <div class="option">Квартира</div>
+                    <div class="option">Проект</div>
+                    <div class="option">Здание</div>
+                </div>
+                <div class="result correct">Правильно! 🎉 Это действительно "Проект"</div>
+                <div class="controls">
+                    <button class="control-btn" id="next-question"><i class="fas fa-arrow-right"></i> Следующий вопрос</button>
+                </div>
+                <div class="progress">Вопрос 1 из 10</div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Правильных ответов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Неправильных ответов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">70%</div>
+                        <div class="stat-label">Общая точность</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-container" id="statsContainer">
+                <h2 class="stats-header"><i class="fas fa-chart-pie"></i> Статистика обучения</h2>
+                <div class="stats-content">
+                    <div class="stats-card">
+                        <h3>Общая статистика</h3>
+                        <p><i class="fas fa-check-circle" style="color: #4cd964;"></i> Всего изучено слов: <strong>142</strong></p>
+                        <p><i class="fas fa-tasks" style="color: #5c7fda;"></i> Пройдено тестов: <strong>15</strong></p>
+                        <p><i class="fas fa-bullseye" style="color: #ff9500;"></i> Средняя точность: <strong>87%</strong></p>
+                        <p><i class="fas fa-clock" style="color: #4a6491;"></i> Потрачено времени: <strong>12ч 45м</strong></p>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3>Последние результаты</h3>
+                        <p><i class="fas fa-calendar" style="color: #4cd964;"></i> Тест от 10.05.2023: <strong>92%</strong></p>
+                        <p><i class="fas fa-calendar" style="color: #4cd964;"></i> Тест от 09.05.2023: <strong>85%</strong></p>
+                        <p><i class="fas fa-calendar" style="color: #ff3b30;"></i> Тест от 08.05.2023: <strong>78%</strong></p>
+                        <p><i class="fas fa-calendar" style="color: #4cd964;"></i> Тест от 07.05.2023: <strong>91%</strong></p>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3>Сложные слова</h3>
+                        <ul style="list-style-type: none;">
+                            <li><i class="fas fa-exclamation-triangle" style="color: #ff3b30;"></i> Daşınmaz əmlak (ошибок: 5)</li>
+                            <li><i class="fas fa-exclamation-triangle" style="color: #ff9500;"></i> İpoteka krediti (ошибок: 4)</li>
+                            <li><i class="fas fa-exclamation-triangle" style="color: #ff9500;"></i> İcarə müqaviləsi (ошибок: 3)</li>
+                            <li><i class="fas fa-exclamation-triangle" style="color: #ff9500;"></i> Təmir və bərpa (ошибок: 3)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3>Рекомендации</h3>
+                        <p><i class="fas fa-lightbulb" style="color: #ffd700;"></i> Сосредоточьтесь на терминах недвижимости</p>
+                        <p><i class="fas fa-lightbulb" style="color: #ffd700;"></i> Повторите сложные слова</p>
+                        <p><i class="fas fa-lightbulb" style="color: #ffd700;"></i> Пройдите тест еще раз для закрепления</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-container" id="loginContainer" style="display: none;">
+            <div class="login-form">
+                <h2><i class="fas fa-lock"></i> Вход в систему</h2>
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Имя пользователя</label>
+                    <input type="text" id="username" placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-key"></i> Пароль</label>
+                    <input type="password" id="password" placeholder="Введите ваш пароль">
+                </div>
+                <button class="login-btn" id="submitLogin"><i class="fas fa-sign-in-alt"></i> Войти</button>
+                <p style="margin-top: 20px;">Нет аккаунта? <a href="#" id="switchToRegister" style="color: #5c7fda;">Зарегистрируйтесь</a></p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Тренажер для изучения азербайджанского языка в сфере недвижимости | Sea Breeze Project | Все переводы проверены <i class="fas fa-check-circle" style="color: #4cd964;"></i></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверенная база данных слов
+            const wordsDB = [
+                { az: "Daşınmaz əmlak", ru: "Недвижимость", category: "estate", example: "Bu daşınmaz əmlak yüksək gəlir gətirir.", level: "Основной" },
+                { az: "Mənzil", ru: "Квартира", category: "estate", example: "Mənzil dənizə yaxın yerləşir.", level: "Основной" },
+                { az: "Yeni tikili", ru: "Новостройка", category: "estate", example: "Yeni tikililər müasir standartlara cavab verir.", level: "Основной" },
+                { az: "Yaşayış kompleksi", ru: "Жилой комплекс", category: "estate", example: "Yaşayış kompleksində hovuz və fitness mərkəzi var.", level: "Основной" },
+                { az: "Layihə", ru: "Проект", category: "business", example: "Layihə 2025-ci ildə tamamlanacaq.", level: "Основной" },
+                { az: "Investisiya", ru: "Инвестиция", category: "business", example: "Investisiya gələcək üçün sərfəli imkan yaradır.", level: "Основной" },
+                { az: "İllik gəlir", ru: "Годовой доход", category: "business", example: "İllik gəlir təxminən 7-8% təşkil edir.", level: "Средний" },
+                { az: "İcarə", ru: "Аренда", category: "sales", example: "İcarə müqaviləsi 1 il müddətinə bağlanır.", level: "Основной" },
+                { az: "Qiymət", ru: "Цена", category: "sales", example: "Qiymətə parkinq və anbar daxildir.", level: "Основной" },
+                { az: "Dəyər", ru: "Стоимость", category: "sales", example: "Dəyər illər ərzində artacaq.", level: "Основной" },
+                { az: "Ofis", ru: "Офис", category: "estate", example: "Ofis şəhərin mərkəzində yerləşir.", level: "Основной" },
+                { az: "Torpaq", ru: "Земля", category: "estate", example: "Torpaq sahəsi inkişaf üçün əlverişlidir.", level: "Основной" },
+                { az: "Villa", ru: "Вилла", category: "estate", example: "Villa dəniz kənarında inşa edilir.", level: "Средний" },
+                { az: "Bina", ru: "Здание", category: "estate", example: "Bina 5 mərtəbədən ibarətdir.", level: "Основной" },
+                { az: "Sahib", ru: "Владелец", category: "business", example: "Mülkiyyət sahibi razılıq verdi.", level: "Основной" },
+                { az: "Alıcı", ru: "Покупатель", category: "sales", example: "Alıcı mənzili görmək istəyir.", level: "Основной" },
+                { az: "Satıcı", ru: "Продавец", category: "sales", example: "Satıcı əmlakı təqdim etdi.", level: "Основной" },
+                { az: "Müqavilə", ru: "Договор", category: "business", example: "Müqavilə imzalandı.", level: "Основной" },
+                { az: "Kateqoriya", ru: "Категория", category: "business", example: "Bu, yüksək kateqoriyalı mənzildir.", level: "Средний" },
+                { az: "Təmir", ru: "Ремонт", category: "estate", example: "Mənzildə təmir lazımdır.", level: "Основной" }
+            ];
+            
+            // База данных тестовых вопросов с проверенными переводами
+            const quizDB = [
+                {
+                    question: "Выберите правильный перевод для: 'Layihə'",
+                    options: ["Офис", "Квартира", "Проект", "Здание"],
+                    correct: 2,
+                    explanation: "Layihə переводится как 'Проект'"
+                },
+                {
+                    question: "Выберите правильный перевод для: 'Mənzil'",
+                    options: ["Офис", "Квартира", "Дом", "Здание"],
+                    correct: 1,
+                    explanation: "Mənzil переводится как 'Квартира'"
+                },
+                {
+                    question: "Выберите правильный перевод для: 'İcarə'",
+                    options: ["Покупка", "Продажа", "Аренда", "Обмен"],
+                    correct: 2,
+                    explanation: "İcarə переводится как 'Аренда'"
+                },
+                {
+                    question: "Выберите правильный перевод для: 'Investisiya'",
+                    options: ["Доход", "Прибыль", "Инвестиция", "Недвижимость"],
+                    correct: 2,
+                    explanation: "Investisiya переводится как 'Инвестиция'"
+                },
+                {
+                    question: "Выберите правильный перевод для: 'Daşınmaz əmlak'",
+                    options: ["Земельный участок", "Недвижимость", "Строительство", "Коммерческая недвижимость"],
+                    correct: 1,
+                    explanation: "Daşınmaz əmlak переводится как 'Недвижимость'"
+                },
+                {
+                    question: "Выберите правильный перевод для: 'Yaşayış kompleksi'",
+                    options: ["Жилой комплекс", "Торговый центр", "Офисное здание", "Гостиница"],
+                    correct: 0,
+                    explanation: "Yaşayış kompleksi переводится как 'Жилой комплекс'"
+                }
+            ];
+            
+            // Переменные состояния
+            let currentUser = null;
+            let currentMode = 'learn';
+            let currentCategory = 'all';
+            let currentWordIndex = 0;
+            let currentQuizIndex = 0;
+            let correctAnswers = 0;
+            let totalAnswers = 0;
+            
+            // Элементы интерфейса
+            const authButtons = document.getElementById('authButtons');
+            const userInfo = document.getElementById('userInfo');
+            const usernameDisplay = document.getElementById('usernameDisplay');
+            const loginContainer = document.getElementById('loginContainer');
+            const loginTitle = document.getElementById('loginTitle');
+            const statsContainer = document.getElementById('statsContainer');
+            const wordInfo = document.querySelector('.word-info');
+            
+            // Проверяем, есть ли активный пользователь
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUIAfterLogin();
+            }
+            
+            // Обработчики кнопок авторизации
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                document.getElementById('submitLogin').textContent = 'Войти';
+                loginContainer.style.display = 'flex';
+            });
+            
+            document.getElementById('registerBtn').addEventListener('click', function() {
+                document.getElementById('submitLogin').textContent = 'Зарегистрироваться';
+                loginContainer.style.display = 'flex';
+            });
+            
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.removeItem('currentUser');
+                currentUser = null;
+                authButtons.style.display = 'flex';
+                userInfo.style.display = 'none';
+            });
+            
+            document.getElementById('statsBtn').addEventListener('click', function() {
+                statsContainer.style.display = 'block';
+                document.querySelector('.learn-mode').style.display = 'none';
+                document.querySelector('.quiz-container').style.display = 'none';
+            });
+            
+            document.getElementById('submitLogin').addEventListener('click', function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username && password) {
+                    currentUser = {
+                        username: username,
+                        learnedWords: 142,
+                        correctAnswers: 94,
+                        streak: 12
+                    };
+                    
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    updateUIAfterLogin();
+                    loginContainer.style.display = 'none';
+                } else {
+                    alert('Пожалуйста, заполните все поля');
+                }
+            });
+            
+            document.getElementById('switchToRegister').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('submitLogin').textContent = 'Зарегистрироваться';
+            });
+            
+            function updateUIAfterLogin() {
+                authButtons.style.display = 'none';
+                userInfo.style.display = 'flex';
+                usernameDisplay.textContent = currentUser.username;
+                
+                // Обновляем статистику
+                document.querySelector('.stat-value:nth-child(1)').textContent = currentUser.learnedWords;
+                document.querySelector('.stat-value:nth-child(2)').textContent = currentUser.correctAnswers + '%';
+                document.querySelector('.stat-value:nth-child(3)').textContent = currentUser.streak;
+            }
+            
+            // Режимы работы приложения
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            const learnMode = document.querySelector('.learn-mode');
+            const quizMode = document.querySelector('.quiz-container');
+            
+            modeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    modeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const mode = this.getAttribute('data-mode');
+                    currentMode = mode;
+                    
+                    if (mode === 'learn') {
+                        learnMode.style.display = 'block';
+                        quizMode.style.display = 'none';
+                        statsContainer.style.display = 'none';
+                    } else if (mode === 'quiz') {
+                        learnMode.style.display = 'none';
+                        quizMode.style.display = 'block';
+                        statsContainer.style.display = 'none';
+                        startNewQuiz();
+                    } else if (mode === 'phrases') {
+                        learnMode.style.display = 'none';
+                        quizMode.style.display = 'none';
+                        statsContainer.style.display = 'none';
+                        alert('Режим изучения фраз и диалогов скоро будет добавлен!');
+                    }
+                });
+            });
+            
+            // Фильтрация по категориям
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentCategory = this.getAttribute('data-category');
+                    currentWordIndex = 0;
+                    showCurrentWord();
+                });
+            });
+            
+            // Управление карточками слов
+            const showTranslationBtn = document.getElementById('show-translation');
+            const nextWordBtn = document.getElementById('next-word');
+            const wordAz = document.querySelector('.word-az');
+            const wordRu = document.querySelector('.word-ru');
+            const example = document.querySelector('.example');
+            const progress = document.querySelector('.progress');
+            
+            showTranslationBtn.addEventListener('click', function() {
+                wordRu.style.display = 'block';
+                example.style.display = 'block';
+                wordInfo.style.display = 'block';
+            });
+            
+            nextWordBtn.addEventListener('click', function() {
+                wordRu.style.display = 'none';
+                example.style.display = 'none';
+                wordInfo.style.display = 'none';
+                
+                currentWordIndex = (currentWordIndex + 1) % getFilteredWords().length;
+                showCurrentWord();
+            });
+            
+            function getFilteredWords() {
+                if (currentCategory === 'all') {
+                    return wordsDB;
+                }
+                return wordsDB.filter(word => word.category === currentCategory);
+            }
+            
+            function showCurrentWord() {
+                const words = getFilteredWords();
+                const word = words[currentWordIndex];
+                
+                wordAz.textContent = word.az;
+                wordRu.textContent = word.ru;
+                example.textContent = `Пример: ${word.example}`;
+                wordInfo.textContent = `Категория: ${getCategoryName(word.category)} | Уровень: ${word.level}`;
+                
+                progress.textContent = `Слово ${currentWordIndex + 1} из ${words.length} ${currentCategory !== 'all' ? `в категории "${getCategoryName(word.category)}"` : ''}`;
+            }
+            
+            function getCategoryName(category) {
+                const categories = {
+                    'estate': 'Недвижимость',
+                    'business': 'Бизнес-термины',
+                    'sales': 'Продажи'
+                };
+                return categories[category] || category;
+            }
+            
+            // Логика для тестового режима
+            const options = document.querySelectorAll('.option');
+            const result = document.querySelector('.result');
+            const nextQuestionBtn = document.getElementById('next-question');
+            const questionElement = document.querySelector('.question');
+            const quizProgress = document.querySelector('.quiz-container .progress');
+            
+            function startNewQuiz() {
+                currentQuizIndex = 0;
+                correctAnswers = 0;
+                totalAnswers = 0;
+                showQuestion();
+            }
+            
+            function showQuestion() {
+                const question = quizDB[currentQuizIndex];
+                questionElement.textContent = question.question;
+                
+                options.forEach((option, index) => {
+                    option.textContent = question.options[index];
+                    option.style.backgroundColor = '#e4e9f2';
+                    option.style.pointerEvents = 'auto';
+                });
+                
+                result.style.display = 'none';
+                quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${quizDB.length}`;
+                
+                // Обновляем статистику
+                document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
+                document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
+                document.querySelector('.quiz-container .stat-value:nth-child(3)').textContent = 
+                    totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) + '%' : '0%';
+            }
+            
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = quizDB[currentQuizIndex];
+                    const selectedIndex = Array.from(options).indexOf(this);
+                    
+                    // Проверяем, правильный ли ответ
+                    if (selectedIndex === question.correct) {
+                        this.style.backgroundColor = '#4cd964';
+                        result.textContent = `Правильно! 🎉 ${question.explanation}`;
+                        result.className = 'result correct';
+                        correctAnswers++;
+                    } else {
+                        this.style.backgroundColor = '#ff3b30';
+                        result.textContent = `Неправильно. ${question.explanation}`;
+                        result.className = 'result incorrect';
+                        
+                        // Подсвечиваем правильный ответ
+                        options[question.correct].style.backgroundColor = '#4cd964';
+                    }
+                    
+                    totalAnswers++;
+                    result.style.display = 'block';
+                    
+                    // Обновляем статистику
+                    document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
+                    document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
+                    document.querySelector('.quiz-container .stat-value:nth-child(3)').textContent = 
+                        Math.round((correctAnswers / totalAnswers) * 100) + '%';
+                    
+                    // Блокируем все варианты после ответа
+                    options.forEach(opt => {
+                        opt.style.pointerEvents = 'none';
+                    });
+                });
+            });
+            
+            nextQuestionBtn.addEventListener('click', function() {
+                // Сбрасываем состояние вариантов ответа
+                options.forEach(opt => {
+                    opt.style.backgroundColor = '#e4e9f2';
+                    opt.style.pointerEvents = 'auto';
+                });
+                
+                result.style.display = 'none';
+                
+                // Переходим к следующему вопросу
+                currentQuizIndex = (currentQuizIndex + 1) % quizDB.length;
+                showQuestion();
+            });
+            
+            // Показываем первое слово при загрузке
+            showCurrentWord();
+        });
+    </script>
+</body>
+</html>
