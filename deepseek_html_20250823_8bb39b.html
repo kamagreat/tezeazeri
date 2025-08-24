@@ -310,6 +310,39 @@
             color: white;
         }
         
+        .example-container {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #5c7fda;
+            display: none;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .example-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .example-azerbaijani {
+            font-style: italic;
+            color: #5c7fda;
+            font-weight: 500;
+        }
+        
+        .example-russian {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        
         .progress {
             text-align: center;
             margin-top: 25px;
@@ -593,6 +626,13 @@
                     <div class="option">Здание</div>
                 </div>
                 <div class="result correct">Правильно! 🎉 Это действительно "Проект"</div>
+                <div class="example-container" style="display: none;">
+                    <div class="example-title"><i class="fas fa-lightbulb"></i> Пример использования:</div>
+                    <div class="example-text">
+                        <div class="example-azerbaijani"></div>
+                        <div class="example-russian"></div>
+                    </div>
+                </div>
                 <div class="controls">
                     <button class="control-btn" id="next-question"><i class="fas fa-arrow-right"></i> Следующий вопрос</button>
                 </div>
@@ -706,37 +746,61 @@
                     question: "Выберите правильный перевод для: 'Layihə'",
                     options: ["Офис", "Квартира", "Проект", "Здание"],
                     correct: 2,
-                    explanation: "Layihə переводится как 'Проект'"
+                    explanation: "Layihə переводится как 'Проект'",
+                    example: {
+                        az: "Layihə 2025-ci ildə tamamlanacaq.",
+                        ru: "Проект будет завершен в 2025 году."
+                    }
                 },
                 {
                     question: "Выберите правильный перевод для: 'Mənzil'",
                     options: ["Офис", "Квартира", "Дом", "Здание"],
                     correct: 1,
-                    explanation: "Mənzil переводится как 'Квартира'"
+                    explanation: "Mənzil переводится как 'Квартира'",
+                    example: {
+                        az: "Mənzil dənizə yaxın yerləşir.",
+                        ru: "Квартира расположена близко к морю."
+                    }
                 },
                 {
                     question: "Выберите правильный перевод для: 'İcarə'",
                     options: ["Покупка", "Продажа", "Аренда", "Обмен"],
                     correct: 2,
-                    explanation: "İcarə переводится как 'Аренда'"
+                    explanation: "İcarə переводится как 'Аренда'",
+                    example: {
+                        az: "İcarə müqaviləsi 1 il müddətinə bağlanır.",
+                        ru: "Договор аренды заключается на 1 год."
+                    }
                 },
                 {
                     question: "Выберите правильный перевод для: 'Investisiya'",
                     options: ["Доход", "Прибыль", "Инвестиция", "Недвижимость"],
                     correct: 2,
-                    explanation: "Investisiya переводится как 'Инвестиция'"
+                    explanation: "Investisiya переводится как 'Инвестиция'",
+                    example: {
+                        az: "Investisiya gələcək üçün sərfəli imkan yaradır.",
+                        ru: "Инвестиция создает выгодную возможность для будущего."
+                    }
                 },
                 {
                     question: "Выберите правильный перевод для: 'Daşınmaz əmlak'",
                     options: ["Земельный участок", "Недвижимость", "Строительство", "Коммерческая недвижимость"],
                     correct: 1,
-                    explanation: "Daşınmaz əmlak переводится как 'Недвижимость'"
+                    explanation: "Daşınmaz əmlak переводится как 'Недвижимость'",
+                    example: {
+                        az: "Bu daşınmaz əmlak yüksək gəlir gətirir.",
+                        ru: "Эта недвижимость приносит высокий доход."
+                    }
                 },
                 {
                     question: "Выберите правильный перевод для: 'Yaşayış kompleksi'",
                     options: ["Жилой комплекс", "Торговый центр", "Офисное здание", "Гостиница"],
                     correct: 0,
-                    explanation: "Yaşayış kompleksi переводится как 'Жилой комплекс'"
+                    explanation: "Yaşayış kompleksi переводится как 'Жилой комплекс'",
+                    example: {
+                        az: "Yaşayış kompleksində hovuz və fitness mərkəzi var.",
+                        ru: "В жилом комплексе есть бассейн и фитнес-центр."
+                    }
                 }
             ];
             
@@ -946,6 +1010,7 @@
                 });
                 
                 result.style.display = 'none';
+                document.querySelector('.example-container').style.display = 'none';
                 quizProgress.textContent = `Вопрос ${currentQuizIndex + 1} из ${quizDB.length}`;
                 
                 // Обновляем статистику
@@ -978,6 +1043,17 @@
                     totalAnswers++;
                     result.style.display = 'block';
                     
+                    // Показываем пример использования
+                    const exampleContainer = document.querySelector('.example-container');
+                    const exampleAzerbaijani = document.querySelector('.example-azerbaijani');
+                    const exampleRussian = document.querySelector('.example-russian');
+                    
+                    if (question.example) {
+                        exampleAzerbaijani.textContent = question.example.az;
+                        exampleRussian.textContent = question.example.ru;
+                        exampleContainer.style.display = 'block';
+                    }
+                    
                     // Обновляем статистику
                     document.querySelector('.quiz-container .stat-value:nth-child(1)').textContent = correctAnswers;
                     document.querySelector('.quiz-container .stat-value:nth-child(2)').textContent = totalAnswers - correctAnswers;
@@ -999,6 +1075,7 @@
                 });
                 
                 result.style.display = 'none';
+                document.querySelector('.example-container').style.display = 'none';
                 
                 // Переходим к следующему вопросу
                 currentQuizIndex = (currentQuizIndex + 1) % quizDB.length;
